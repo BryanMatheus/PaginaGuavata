@@ -3,4 +3,6 @@ from app.models.galeria import Galeria
 from app import db
 import os
 
-bp = Blueprint('/galeria', __name__)
+bp = Blueprint('galeria', __name__)
+
+
