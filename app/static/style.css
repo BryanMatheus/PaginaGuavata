@@ -10,7 +10,7 @@ header {
     text-align: center;
     padding: 1rem 0;
 }
-.main-image {
+.main-image,img {
     width: 100%;
     height: auto;
 }
@@ -41,5 +41,9 @@ header {
 .panel h3 {
     margin-top: 0;
 }
-
+img {
+    width: 300px;
+    height: auto;
+    border: 2px solid black;
+}
 
