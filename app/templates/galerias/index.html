@@ -18,11 +18,12 @@
         </tr>
         {% for galeria in data %}
             <tr>
-                <td>{{ galeria.idgal }}</td>
+                <td>{{ galeria.id }}</td>
                 <td>{{ galeria.title }}</td>
                 <td>{{ galeria.descrip }}</td>
                 <td>
-                    <a href="{{ url_for('galeria.delete', id=galeria.idgal) }}">Eliminar</a>                
+                    <a href="{{ url_for('galeria.delete', id=galeria.id) }}">Eliminar</a> 
+                    <a href="{{ url_for('galeria.edit', id=galeria.id) }}">Editar</a> 
                 </td>
             </tr>
         {% endfor %}
