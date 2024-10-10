@@ -4,7 +4,7 @@ from app.models.user import User
 
 bp = Blueprint('register', __name__)
 
-@bp.route('/', methods=['GET', 'POST'])
+@bp.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
         email = request.form['email']
