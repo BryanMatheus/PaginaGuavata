@@ -10,19 +10,43 @@
             padding: 80px 0;
         }
         .hero {
-            background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80');
+            background-image: url('/app/static/img/guavatafondo.jpg');
             background-size: cover;
             background-position: center;
             height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            text-align: center;
+            align-items: center;
             color: white;
+            text-align: center;
         }
         .hero h1 {
             font-size: 4rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .bubbles-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+        .bubble {
+            background-color: white;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .bubble:hover {
+            transform: scale(1.05);
         }
         .gallery img {
             width: 100%;
@@ -64,7 +88,32 @@
     <section id="inicio" class="hero">
         <div class="container">
             <h1>Bienvenidos a Guavatá</h1>
-            <p class="lead">Descubre la belleza y encanto de nuestro pueblo</p>
+            <p class="lead mb-5">Descubre la belleza y encanto de nuestro pueblo</p>
+        </div>
+    </section>
+
+    <section class="bubbles-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-4">
+                    <div class="bubble">
+                        <p>Naturaleza Exuberante</p>
+                    </div>
+                    <p class="text-center">Explora nuestros hermosos paisajes y senderos naturales</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bubble">
+                        <p>Rica Cultura</p>
+                    </div>
+                    <p class="text-center">Sumérgete en nuestras tradiciones y festividades únicas</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bubble">
+                        <p>Hospitalidad Santandereana</p>
+                    </div>
+                    <p class="text-center">Disfruta de la calidez y amabilidad de nuestra gente</p>
+                </div>
+            </div>
         </div>
     </section>
 
