@@ -20,11 +20,10 @@ def create_app():
         from .models.user import User
         return User.query.get(int(user_id))
 
-    from app.routes import register, galeRoutes, contRoutes, paginaRoutes
+    from app.routes import register, galeRoutes, contRoutes
     app.register_blueprint(register.bp)
     app.register_blueprint(galeRoutes.bp)
     app.register_blueprint(contRoutes.bp)
-    app.register_blueprint(paginaRoutes.bp)
 
     from app.routes.auth import auth_bp
     app.register_blueprint(auth_bp)

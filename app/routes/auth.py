@@ -18,8 +18,6 @@ def login():
             
             if user.rol == 'admin':
                 return redirect(url_for('auth.administrador'))
-            elif user.rol == 'empleado':
-                return redirect(url_for('auth.empleado'))
             
         flash('Invalid credentials. Please try again.', 'danger')
     
@@ -27,11 +25,7 @@ def login():
 
 @auth_bp.route('/administrador')
 def administrador():
-    return render_template("/administradores/administradores.html")
-
-@auth_bp.route('/empleado')
-def empleado():
-    return render_template("/empleados/empleados.html")
+    return render_template("/administradores/indexg.html")
 
 @auth_bp.route('/logout')
 @login_required
