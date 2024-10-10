@@ -6,3 +6,4 @@ class Galeria(db.Model):
     imagenes = db.Column(db.String(255))
     descrip = db.Column(db.String(255))
     title = db.Column(db.String(255))
+    
