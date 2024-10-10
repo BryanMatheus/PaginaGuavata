@@ -1,0 +1,13 @@
+prefix=c:/Users/SENA/Documents/GitHub/PaginaGuavata/.conda/Library
+exec_prefix=c:/Users/SENA/Documents/GitHub/PaginaGuavata/.conda/Library
+libdir=c:/Users/SENA/Documents/GitHub/PaginaGuavata/.conda/Library/lib
+sharedlibdir=c:/Users/SENA/Documents/GitHub/PaginaGuavata/.conda/Library/lib
+includedir=c:/Users/SENA/Documents/GitHub/PaginaGuavata/.conda/Library/include
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.13
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

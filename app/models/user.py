@@ -9,4 +9,4 @@ class User(db.Model, UserMixin):
     rol = db.Column(db.String(20), nullable=False)
     
     def get_id(self):
-        return str(self.idu)
+        return str(self.id)
