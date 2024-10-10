@@ -3,10 +3,10 @@ from app import db
 
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
-    idu = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     rol = db.Column(db.String(20), nullable=False)
     
     def get_id(self):
-        return str(self.idu)
+        return str(self.id)

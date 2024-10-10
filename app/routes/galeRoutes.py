@@ -9,7 +9,7 @@ bp = Blueprint('galeria', __name__)
 @bp.route('/galeria')
 def index():
     data = Galeria.query.all()
-    return render_template('galerias/index.html', data=data)
+    return render_template('administradores/indexg.html', data=data)
 
 @bp.route('/addgaleria', methods=['GET', 'POST'])
 def add():
@@ -27,33 +27,31 @@ def add():
         else:
             ruta_imagen = None
         
-        new_galeria = Galeria(imagenes=imagenes, descrip=descrip, title=title)
+        new_galeria = Galeria(imagenes=ruta_imagen, descrip=descrip, title=title)
         db.session.add(new_galeria)
         db.session.commit()
         return redirect(url_for('galeria.index'))
 
-    return render_template('/galerias/add.html') 
+    return render_template('/administradores/addg.html') 
 
 @bp.route('/editgaleria/<int:id>', methods=['GET', 'POST'])
-def edit(idgal):
+def edit(id):
 
-    galeria = Galeria.query.get_or_404(idgal)
+    galeria = Galeria.query.get_or_404(id)
 
     if request.method == 'POST':
-        galeria.imagenes = request.files['imagenes']
         galeria.descrip = request.form['descrip']
         galeria.title = request.form['title']
         db.session.commit()
         return redirect(url_for('galeria.index'))
 
-    return render_template('galerias/edit.html', galeria=galeria)
+    return render_template('/administradores/editg.html', galeria=galeria)
 
 @bp.route('/deletegaleria/<int:id>')
-def delete(idgal):
-    galeria = Galeria.query.get_or_404(idgal)
+def delete(id):
+    galeria = Galeria.query.get_or_404(id)
     
     db.session.delete(galeria)
     db.session.commit()
 
     return redirect(url_for('galeria.index'))
-    

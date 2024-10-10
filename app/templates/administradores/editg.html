@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>Editar imagen</title>
+</head>
+<body>
+    <h1>Editar imagen</h1>
+    <form action="{{ url_for('galeria.edit', id=galeria.id) }}" method="post">
+
+        <label for="title">Titulo:</label>
+        <input type="text" id="title" name="title" value="{{ galeria.title }}" required>
+        <label for="descrip">Descripcion:</label>
+        <input type="text" id="descrip" name="descrip" value="{{ galeria.descrip }}" required>
+        <button type="submit">Actualizar imagen</button>
+    </form>
+</body>
+</html>
