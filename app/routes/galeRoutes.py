@@ -32,7 +32,7 @@ def add():
         db.session.commit()
         return redirect(url_for('galeria.index'))
 
-    return render_template('/galerias/add.html')
+    return render_template('/galerias/add.html') 
 
 @bp.route('/editgaleria/<int:id>', methods=['GET', 'POST'])
 def edit(id):
