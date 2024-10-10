@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1>Editar imagen</h1>
-    <form action="{{ url_for('galeria.edit', id=galeria.idgal) }}" method="post">
+    <form action="{{ url_for('galeria.edit', id=galeria.id) }}" method="post">
 
         <label for="title">Titulo:</label>
         <input type="text" id="title" name="title" value="{{ galeria.title }}" required>
