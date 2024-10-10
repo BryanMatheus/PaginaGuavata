@@ -7,7 +7,7 @@ bp = Blueprint('contactanos', __name__)
 @bp.route('/contactanos')
 def index():
     data = Contactanos.query.all()
-    return render_template('contactanos/index.html', data=data)
+    return render_template('administradores/indexc.html', data=data)
 
 @bp.route('/addcontacto', methods=['GET', 'POST'])
 def add():

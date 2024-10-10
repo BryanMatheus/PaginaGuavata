@@ -9,7 +9,7 @@ bp = Blueprint('galeria', __name__)
 @bp.route('/galeria')
 def index():
     data = Galeria.query.all()
-    return render_template('galerias/index.html', data=data)
+    return render_template('administradores/indexg.html', data=data)
 
 @bp.route('/addgaleria', methods=['GET', 'POST'])
 def add():
@@ -32,7 +32,7 @@ def add():
         db.session.commit()
         return redirect(url_for('galeria.index'))
 
-    return render_template('/galerias/add.html') 
+    return render_template('/administradores/addg.html') 
 
 @bp.route('/editgaleria/<int:id>', methods=['GET', 'POST'])
 def edit(id):
@@ -45,7 +45,7 @@ def edit(id):
         db.session.commit()
         return redirect(url_for('galeria.index'))
 
-    return render_template('galerias/edit.html', galeria=galeria)
+    return render_template('/administradores/editg.html', galeria=galeria)
 
 @bp.route('/deletegaleria/<int:id>')
 def delete(id):
