@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <title>Galeria</title>
+</head>
+<body>
+    <h1>Galeria</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Descripcion</th>
+            <th>Acciones</th>
+        </tr>
+        {% for galeria in data %}
+            <tr>
+                <td>{{ galeria.idgal }}</td>
+                <td>{{ galeria.title }}</td>
+                <td>{{ galeria.descrip }}</td>
+                <td>
+                    <a href="{{ url_for('galeria.delete', id=galeria.idgal) }}">Eliminar</a>                
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('galeria.index') }}">Ir a Galeria</a>
+</body>
+</html>

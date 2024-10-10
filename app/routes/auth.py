@@ -1,41 +1,41 @@
-from flask import Blueprint, render_template, redirect, url_for, flash, request
-from flask_login import login_user, logout_user, login_required
-from werkzeug.security import check_password_hash
+from flask import Blueprint, render_template, redirect, url_for, request, flash
+from flask_login import login_user, logout_user, login_required, current_user
 from app.models.user import User
 
 auth_bp = Blueprint('auth', __name__)
 
-@auth_bp.route('/', methods=['GET', 'POST'])
+@auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
-
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-
-        user = User.query.filter_by(email=email).first()
-
-        if user and check_password_hash(user.password, password):
-            login_user(user)
-            flash("Login exitoso!", "success")
-            
-            return redirect_based_on_role(user)
         
-        flash('Credenciales inválidas. Por favor, intente de nuevo.', 'danger')
+        user = User.query.filter_by(email=email, password=password).first()
 
-    return render_template("/users/users.html")
+        if user:
+            login_user(user)
+            flash("Login successful!", "success")
+            
+            if user.rol == 'admin':
+                return redirect(url_for('auth.administrador'))
+            elif user.rol == 'empleado':
+                return redirect(url_for('auth.empleado'))
+            
+        flash('Invalid credentials. Please try again.', 'danger')
+    
+    return render_template("/users/login.html")
 
+@auth_bp.route('/administrador')
+def administrador():
+    return render_template("/administradores/administradores.html")
 
-def redirect_based_on_role(usuario):
-    if usuario.rol == 'admin':
-        return redirect(url_for('main.vadmin'))
-    elif usuario.rol == 'empleado':
-        return redirect(url_for('main.vemple'))
-    else:
-        return redirect(url_for('main.vusuario'))
+@auth_bp.route('/empleado')
+def empleado():
+    return render_template("/empleados/empleados.html")
 
 @auth_bp.route('/logout')
 @login_required
 def logout():
     logout_user()
-    flash('Has cerrado sesión.', 'info')
+    flash('You have been logged out.', 'info')
     return redirect(url_for('auth.login'))
