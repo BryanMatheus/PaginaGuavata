@@ -10,19 +10,43 @@
             padding: 80px 0;
         }
         .hero {
-            background-image: url('/app/static/img/fondo.jpg');
+            background-image: url('/app/static/img/guavatafondo.jpg');
             background-size: cover;
             background-position: center;
             height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
-            text-align: center;
+            align-items: center;
             color: white;
+            text-align: center;
         }
         .hero h1 {
             font-size: 4rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .bubbles-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+        .bubble {
+            background-color: white;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .bubble:hover {
+            transform: scale(1.05);
         }
         .gallery img {
             width: 100%;
@@ -64,7 +88,32 @@
     <section id="inicio" class="hero">
         <div class="container">
             <h1>Bienvenidos a Guavatá</h1>
-            <p class="lead">Descubre la belleza y encanto de nuestro pueblo</p>
+            <p class="lead mb-5">Descubre la belleza y encanto de nuestro pueblo</p>
+        </div>
+    </section>
+
+    <section class="bubbles-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-4">
+                    <div class="bubble">
+                        <p>Naturaleza Exuberante</p>
+                    </div>
+                    <p class="text-center">Explora nuestros hermosos paisajes y senderos naturales</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bubble">
+                        <p>Rica Cultura</p>
+                    </div>
+                    <p class="text-center">Sumérgete en nuestras tradiciones y festividades únicas</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="bubble">
+                        <p>Hospitalidad Santandereana</p>
+                    </div>
+                    <p class="text-center">Disfruta de la calidez y amabilidad de nuestra gente</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -73,23 +122,11 @@
             <h2 class="text-center mb-5">Historia</h2>
             <div class="row">
                 <div class="col-md-6">
-                    <img src="/app/static/img/martin.jpg" alt="Imagen histórica de Guavatá" class="img-fluid rounded">
-                    
+                    <img src="/placeholder.svg?height=300&width=400" alt="Imagen histórica de Guavatá" class="img-fluid rounded">
                 </div>
                 <div class="col-md-6">
-                    <P>Guavatá es un municipio ubicado en el sur del departamento de santander,republica de colombia, y forma parte de la republica de velez,ubicado aproximadamente a 4 horas de bucaramanga,la capital del departamento, y fue fundado en 1542, por Jimenez de quesada y Martin Galeano (1539) La Real Audiencia de Santa Fe, inició el control económico y político, la apropiación y explotación de la tierra mediante la encomienda, la estancia y los resguardos. La actividad agrícola en épocas de la colonia fue la caña, a finales de la Colonia se incrementó y diversificó la producción agrícola, lo mismo que la minería y la actividad artesanal (textil); en esta época también se aceleró el crecimiento de la población con el proceso de mestizaje iniciado en el siglo anterior.</P>
-
-                    <p>Guavatá es conocida como la capital mundial de la guayaba, ya que allí se cultiva desde epocas antepasadas dicho fruto, y tambien se fabrica <br> una gran cantidad de bocadillos, el cual es comerciado en diferentes lugares de colombia.</p>
-
-                    <p>La actividad agrícola en épocas de la colonia fue la caña, a finales de la colonia se incrementó y diversificó la producción agrícola, lo mismo que la minería y la actividad artesanal (textil); en ésta época también se aceleró el crecimiento de la población con el proceso de mestizaje iniciado en el siglo anterior.</p>
-
-                    <p>Guavatá figuran con 25 veredas las cuales son: San Rafael, Pavachoque, Puente Naranjos, San Jose de Iroba, Estancia de González, San Vicente,    San Roque Picacho, Botua I, Botua II, Matarredonda, Helechal y mesa,Casiquito, Pedregal, Popoa, Helechal y Mesa, Tres Esquinas,<br> Tres Esquinas Los Patios, Puerto López, Unión, Mercadillo, Escobal y El Injerto.</p>
-
-                    <p>En el ámbito cultural, Guavatá comparte muchas tradiciones con otros municipios de la provincia de Vélez, como la música carranguera, los festivales locales y las costumbres campesinas. A lo largo de su historia, Guavatá ha mantenido su esencia rural, aunque ha tenido un<br> desarrollo gradual en términos de infraestructura y comunicaciones.</p>
-
-                    <p> En los últimos años, el turismo ha empezado a ganar relevancia, debido a sus paisajes naturales y la cercanía con otros destinos turísticos de Santander.Sin embargo, sigue siendo un municipio con un fuerte arraigo en sus tradiciones agrícolas y culturales.</p>
-
-
+                    <p>Guavatá es un municipio colombiano ubicado en el departamento de Santander. Su historia se remonta a la época precolombina, cuando la región estaba habitada por indígenas Guanes. El pueblo fue fundado oficialmente en el siglo XVII y desde entonces ha sido un importante centro agrícola y cultural de la región.</p>
+                    <p>A lo largo de los años, Guavatá ha preservado su rica herencia cultural y natural, convirtiéndose en un destino atractivo para quienes buscan experimentar la autenticidad de la vida rural colombiana.</p>
                 </div>
             </div>
         </div>
