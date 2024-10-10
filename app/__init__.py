@@ -16,9 +16,9 @@ def create_app():
     login_manager.login_view = 'auth.login'
 
     @login_manager.user_loader
-    def load_user(user_idu):
+    def load_user(user_id):
         from .models.user import User
-        return User.query.get(int(user_idu))
+        return User.query.get(int(user_id))
 
     from app.routes import register, galeRoutes, contRoutes
     app.register_blueprint(register.bp)
