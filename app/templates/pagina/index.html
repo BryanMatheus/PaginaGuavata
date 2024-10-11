@@ -3,107 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - Mi Página Web</title>
-    <link rel="stylesheet" href="app/static/style.css">
+    <title>Guavatá, Santander - Página de Inicio</title>
+    <link rel="stylesheet" href="/app/static/styleinicio.css">
     <style>
-        body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-}
-header {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
-}
-.main-image {
-    width: 100%;
-    height: auto;
-}
-.intro {
-    padding: 2rem;
-    text-align: center;
-}
-.intro h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-.intro p {
-    font-size: 1.2rem;
-    color: #555;
-}
-.paneles {
-    display: flex;
-    justify-content: space-around;
-    padding: 2rem;
-}
-.panel {
-    width: 23%;
-    background-color: white;
-    border: 1px solid #ddd;
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-.panel h3 {
-    margin-top: 0;
-}
 
     </style>
 </head>
 <body>
+    <nav class="navbar">
+        <a href="#inicio">INICIO</a>
+        <a href="#historia">HISTORIA</a>
+        <a href="#cultura">CULTURA Y RELIGIÓN</a>
+        <a href="#galeria">GALERÍA</a>
+    </nav>
 
-<header>
-    <h1>Bienvenido a Guavatá Santander</h1>
-</header>
+    <header class="hero">
+        <h1>Bienvenido a Guavatá, Santander</h1>
+    </header>
 
+    <section class="info-section">
+        <div class="info-card">
+            <img src="../img/ALTURA.jpg" alt="Paisaje de Guavatá">
+            <div class="info-card-content">
+                <h2>Altura de Guavatá</h2>
+                <p>Ubicada en la cordillera oriental de Colombia, Guavatá se encuentra a una altura promedio de 2,000 metros sobre el nivel del mar, con un rango entre 1,500 y 2,500 metros. Su ubicación le proporciona un clima templado y una topografía variada.</p>
+            </div>
+        </div>
+        <div class="info-card">
+            <img src="../img/POBLACION.jpg" alt="Habitantes de Guavatá">
+            <div class="info-card-content">
+                <h2>Población de Guavatá</h2>
+                <p>Con aproximadamente 4,000 habitantes, Guavatá es un municipio pequeño pero con una comunidad unida. La mayoría de la población vive en zonas rurales, y la economía se basa principalmente en la agricultura.</p>
+            </div>
+        </div>
+        <div class="info-card">
+            <img src="../img/COMIDA.jpg" alt="Gastronomía de Guavatá">
+            <div class="info-card-content">
+                <h2>Gastronomía de Guavatá</h2>
+                <p>La cocina de Guavatá refleja las tradiciones santandereanas. Destacan platos como el piquete en hoja de plátano, el bocadillo veleño y el guarapo de caña. Guavatá es conocida por su producción de guayaba y sus derivados.</p>
+            </div>
+        </div>
+    </section>
 
-<section>
-    <img src="app/imagenes/principal.jpg" alt="Imagen Principal" class="main-image">
-</section>
-
-
-<section class="intro">
-    <h1>Sobre esta página</h1>
-    <p>Esta página trata sobre [tema]. Aquí encontrarás información detallada sobre diferentes aspectos del tema, divididos en varios paneles para facilitar la navegación.</p>
-</section>
-
-
-<section class="paneles">
-    <div class="panel">
-        <h3>Historia</h3>
-
-    </div>
-    <div class="panel">
-        <h3>Cultura</h3>
-
-    </div>
-    <div class="panel">
-        <h3>Religión</h3>
-
-    </div>
-    <div class="panel">
-        <h3>Galeria</h3>
-   
-    </div>
-
- <section class="burbujas">
-    <div class="burbujas">
-        <h2>Altura de Guavatá</h2>
-        <p></p>
-        
-    </div>
-
- </section>
-
-
-  
-
-
-
-
-</section>
-
+    <footer>
+        <p>&copy; 2024 Guavatá, Santander. Todos los derechos reservados.</p>
+    </footer>
 </body>
 </html>
