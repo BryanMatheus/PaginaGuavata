@@ -4,30 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='side.css') }}" />
     <title>Galeria</title>
 </head>
 <body>
-    <h1>Galeria</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Titulo</th>
-            <th>Descripcion</th>
-            <th>Acciones</th>
-        </tr>
-        {% for galeria in data %}
+    <div class="sidebar">
+        <h2>Menú</h2>
+        <a href="{{ url_for('galeria.index') }}">Galería</a>
+        <a href="{{ url_for('galeria.add') }}">Agregar Imagen</a>
+        <a href="{{ url_for('contactanos.index') }}">Contactanos</a>
+    </div>
+    <div class="content">
+        <h1>Galeria</h1>
+        <table>
             <tr>
-                <td>{{ galeria.id }}</td>
-                <td>{{ galeria.title }}</td>
-                <td>{{ galeria.descrip }}</td>
-                <td>
-                    <a href="{{ url_for('galeria.edit', id=galeria.id) }}">Editar</a>
-                    <a href="{{ url_for('galeria.delete', id=galeria.id) }}">Eliminar</a>  
-                </td>
+                <th>ID</th>
+                <th>Titulo</th>
+                <th>Descripcion</th>
+                <th>Acciones</th>
             </tr>
-        {% endfor %}
-    </table>
-    <a href="{{ url_for('contactanos.index') }}">Listado contactanos</a>
-    <a href="{{ url_for('galeria.add') }}">Agregar imagen</a></body>
+            {% for galeria in data %}
+                <tr>
+                    <td>{{ galeria.id }}</td>
+                    <td>{{ galeria.title }}</td>
+                    <td>{{ galeria.descrip }}</td>
+                    <td>
+                        <a href="{{ url_for('galeria.edit', id=galeria.id) }}">Editar</a>
+                        <a href="{{ url_for('galeria.delete', id=galeria.id) }}">Eliminar</a>  
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
 </html>
