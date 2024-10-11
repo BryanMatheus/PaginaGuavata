@@ -1,18 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guavatá - Nuestro Hermoso Pueblo</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
-       .section {
-            padding: 80px 0;
-            margin-top: 50px;
+        :root {
+            --primary-color: #3a5a40;
+            --secondary-color: #588157;
+            --accent-color: #dad7cd;
+            --text-color: #000000;
+            --background-color: #a3b18a;
         }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            font-size: 1.5rem;
+        }
+
+        .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(58, 90, 64, 0.75)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
         .hero {
             background-image: url("{{ url_for('static', filename='img/guavatafondo.jpg') }}");
             background-size: cover;
@@ -24,36 +83,91 @@
             align-items: center;
             color: white;
             text-align: center;
+            position: relative;
         }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
         .hero h1 {
             font-size: 4rem;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1rem;
         }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn-hero {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            font-weight: bold;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.1rem;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-hero:hover {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+        }
+
         .bubbles-section {
-            background-color: #f8f9fa;
+            background-color: var(--background-color);
             padding: 60px 0;
         }
+
+        .bubble-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 250px;
+        }
+
         .bubble {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9);
             border-radius: 50%;
             width: 200px;
             height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            color: #333;
+            margin: 0 auto;
+            color: var(--primary-color);
             font-weight: bold;
             text-align: center;
             padding: 20px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border: 3px solid #808080;
             cursor: pointer;
         }
+
         .bubble:hover {
             transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
+
+        .bubble-text {
+            margin-top: 1rem;
+            text-align: center;
+            color: var(--text-color);
+        }
+
         .expanded-image {
             position: fixed;
             top: 0;
@@ -69,178 +183,184 @@
             pointer-events: none;
             transition: opacity 0.3s ease;
         }
+
         .expanded-image.active {
             opacity: 1;
             pointer-events: auto;
         }
+
         .expanded-image img {
             max-width: 90%;
             max-height: 90%;
             object-fit: contain;
             transition: transform 0.3s ease;
         }
+
         .expanded-image.active img {
             transform: scale(1);
         }
-      .culture-card-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 20px;
-      }
 
-      .culture-card {
-        background-color: #ffffff;
-        border-radius: 15px;
-        padding: 30px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease;
-        overflow: hidden;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-      }
+        .section-title {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
 
-      .culture-card:hover {
-        transform: translateY(-5px);
-      }
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+        }
 
-      .culture-card-header {
-        background-color: #445440;
-        color: white;
-        padding: 20px;
-        margin: -30px -30px 20px -30px;
-        border-radius: 15px 15px 0 0;
-        position: relative;
-      }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
 
-      .culture-card-header h3 {
-        margin: 0;
-        font-size: 1.8rem;
-        font-weight: bold;
-      }
+        .card-img-top {
+            height: 215px;
+            object-fit: cover;
+        }
 
-      .culture-card-header::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 0;
-        border-left: 10px solid transparent;
-        border-right: 10px solid transparent;
-        border-top: 10px solid #5a5c5e;
-      }
+        .card-body {
+            background-color: #ffffff;
+        }
 
-      .culture-card h5 {
-        color: #000000;
-        font-size: 1.3rem;
-        margin-bottom: 15px;
-        border-bottom: 2px solid #000000;
-        padding-bottom: 10px;
-        display: inline-block;
-      }
+        .card-title {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
 
-      .culture-card-content {
-        flex-grow: 1;
-      }
+        .contact-form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-      .legend-image {
-        max-width: 100%;
-        height: auto;
-        border-radius: 10px;
-        margin-bottom: 15px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease;
-      }
+        .form-control:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 0.2rem rgba(88, 129, 87, 0.25);
+        }
 
-      .imghistory {
-        width: 70%; 
-        height: auto;
-        border-radius: 5px;
-        margin-left: 15%;
-    }
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
 
-     .imghistory {
-     transition: transform 0.3s ease; 
-     }
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
 
-     .imghistory:hover {
-     transform: scale(1.1); 
-     }
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+        }
 
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translate3d(0, 40px, 0);
+            }
+            to {
+                opacity: 1;
+                transform: translate3d(0, 0, 0);
+            }
+        }
 
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+        .bg-primary {
+            --bs-bg-opacity: 1;
+            background-color: #a3b18a !important;
+        }
+
+        .galeryimg{
+            width: 100%;
+            height: 240px;
+        }
     </style>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#">Guavatá</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#inicio">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#historia">Historia</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#cultura">Cultura</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#galeria">Galería</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contacto">Contáctanos</a>
-            </li>
-          </ul>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-leaf me-2"></i>Guavatá
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio"><i class="fas fa-home me-1"></i>Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#historia"><i class="fas fa-book me-1"></i>Historia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#cultura"><i class="fas fa-theater-masks me-1"></i>Cultura</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#galeria"><i class="fas fa-images me-1"></i>Galería</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto"><i class="fas fa-envelope me-1"></i>Contáctanos</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
     </nav>
 
     <section id="inicio" class="hero">
-      <div class="container">
-        <h1>Bienvenidos a Guavatá</h1>
-        <p class="lead mb-5">Descubre la belleza y encanto de nuestro pueblo</p>
-      </div>
+        <div class="hero-content">
+            <h1 class="fade-in-up">Bienvenidos a Guavatá</h1>
+            <p class="lead mb-5 fade-in-up">Descubre la belleza y encanto de nuestro pueblo</p>
+            <a href="#historia" class="btn btn-hero fade-in-up">Explora Guavatá</a>
+        </div>
     </section>
 
     <section class="bubbles-section">
         <div class="container">
+            <h2 class="section-title fade-in-up">Características de Guavatá</h2>
             <div class="row justify-content-center">
-                <div class="col-md-4 mb-4">
-                    <div class="bubble" onclick="expandImage('/app/static/img/quebraalejo.jpg', 'Altura de Guavatá')">
-                        <p>Altura de Guavatá</p>
+                <div class="col-md-4 mb-4 fade-in-up">
+                    <div class="bubble-container">
+                        <div class="bubble" onclick="expandImage('/static/img/altura.jpg', 'Altura de Guavatá')">
+                            <p>Altura de Guavatá</p>
+                        </div>
                     </div>
-                    <p class="text-center">
-                        Explora nuestros hermosos paisajes y senderos naturales
+                    <p class="text">
+                        Ubicada en la cordillera oriental de Colombia, Guavatá se encuentra a una altura promedio de 2,000 metros sobre el nivel del mar, con un rango entre 1,500 y 2,500 metros. Su ubicación le proporciona un clima templado y una topografía variada.
                     </p>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="bubble" onclick="expandImage('/app/static/img/poblacion.jpg', 'Población de Guavatá')">
-                        <p>Población de Guavatá</p>
+                <div class="col-md-4 mb-4 fade-in-up">
+                    <div class="bubble-container">
+                        <div class="bubble" onclick="expandImage('/static/img/poblacion.jpg', 'Población de Guavatá')">
+                            <p>Población de Guavatá</p>
+                        </div>
                     </div>
-                    <p class="text-center">
-                        Sumérgete en nuestras tradiciones y festividades únicas
+                    <p class="bubble-text">
+                        Con aproximadamente 4,000 habitantes, Guavatá es un municipio pequeño pero con una comunidad unida. La mayoría de la población vive en zonas rurales, y la economía se basa principalmente en la agricultura.
                     </p>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="bubble" onclick="expandImage('/app/static/img/gastronomia-guavata.jpg', 'Gastronomía de Guavatá')">
-                        <p>Gastronomía de Guavatá</p>
+                <div class="col-md-4 mb-4 fade-in-up">
+                    <div class="bubble-container">
+                        <div class="bubble" onclick="expandImage('/static/img/guayaba2.jpg', 'Gastronomía de Guavatá')">
+                            <p>Gastronomía de Guavatá</p>
+                        </div>
                     </div>
-                    <p class="text-center">
-                        Disfruta de la calidez y amabilidad de nuestra gente
+                    <p class="bubble-text">
+                        La cocina de Guavatá refleja las tradiciones santandereanas. Destacan platos como el piquete en hoja de plátano, el bocadillo veleño y el guarapo de caña. Guavatá es conocida por su producción de guayaba y sus derivados.
                     </p>
                 </div>
             </div>
@@ -251,239 +371,174 @@
         <img src="" alt="Imagen ampliada">
     </div>
 
-
     <section id="historia" class="section bg-light">
-      <div class="container">
-        <h1 class="text-center mb-5 ">HISTORIA</h1>
-        <div class="row">
-          <div class="col-md-6">
-            <img
-            src="{{ url_for('static', filename='img/jimenez1.jpg') }}" 
-            alt="Imagen histórica de Guavatá"
-            class="imghistory">
-          </div>
-          <div class="col-md-6">
-            <h2>Raices Historicas</h2>
-            <p>
-              Guavatá es un municipio colombiano ubicado en el departamento de
-              Santander. Su historia se remonta a la época precolombina, cuando
-              la región estaba habitada por indígenas Guanes. El pueblo fue
-              fundado oficialmente en el siglo XVII y desde entonces ha sido un
-              importante centro agrícola y cultural de la región.
-            </p>
-            <p>
-              A lo largo de los años, Guavatá ha preservado su rica herencia
-              cultural y natural, convirtiéndose en un destino atractivo para
-              quienes buscan experimentar la autenticidad de la vida rural
-              colombiana.
-            </p>
-          </div>
+        <div class="container">
+            <h2 class="section-title fade-in-up">Historia</h2>
+            <div class="row align-items-center">
+                <div class="col-md-6 fade-in-up">
+                    <img src="{{ url_for('static', filename='img/jimenez1.jpg') }}" alt="Imagen histórica de Guavatá"
+                        class="img-fluid rounded shadow-lg mb-4">
+                </div>
+                <div class="col-md-6 fade-in-up">
+                    <h3 class="mb-4">Raíces Históricas</h3>
+                    <p>
+                        Guavatá es un municipio colombiano ubicado en el departamento de Santander. Su historia se remonta a la época precolombina, cuando la región estaba habitada por indígenas Guanes. El pueblo fue fundado oficialmente en el siglo XVII y desde entonces ha sido un importante  centro agrícola y cultural de la región.
+                    </p>
+                    <p>
+                        A lo largo de los años, Guavatá ha preservado su rica herencia cultural y natural, convirtiéndose en un destino atractivo para quienes buscan experimentar la autenticidad de la vida rural colombiana.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
-
 
     <section id="cultura" class="section">
       <div class="container">
-        <h2
-          class="text-center mb-5"
-          style="
-            font-size: 2.5rem;
-            color: #111314;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-          "
-        >
-          Riquezas Culturales
-        </h2>
-        <p
-          class="text-center mb-5"
-          style="
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-          "
-        >
-          La cultura de Guavatá, Santander, es una mezcla vibrante de
-          tradiciones indígenas y españolas, reflejada en sus festividades,
-          patrimonio arquitectónico, gastronomía y mitos. Descubre la esencia de
-          nuestro pueblo a través de estas facetas culturales únicas.
-        </p>
-        <div class="row">
-          <div class="col-md-4">
-            <div class="culture-card">
-              <div class="culture-card-header">
-                <h3>Festividades y Tradiciones</h3>
+          <h2 class="section-title fade-in-up">Riquezas Culturales</h2>
+          <p class="text-center mb-5 fade-in-up" style="font-size: 1.2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+              La cultura de Guavatá, Santander, es una mezcla vibrante de tradiciones indígenas y españolas, reflejada en sus festividades, patrimonio arquitectónico, gastronomía y mitos. Descubre la esencia de nuestro pueblo a través de estas facetas culturales únicas.
+          </p>
+          <div class="row">
+              <div class="col-md-4 mb-4 fade-in-up">
+                  <div class="card h-100">
+                      <div class="card-header bg-primary text-white">
+                          <h3 class="mb-0">Festividades/Tradiciones</h3>
+                      </div>
+                      <img src="{{ url_for('static', filename='img/cristo.jpg') }}" class="card-img-top" alt="Ilustración de festividades">
+                      <div class="card-body">
+                          <h5 class="card-title">Fiesta Patronal del Santo Cristo de Guavatá</h5>
+                          <p class="card-text">
+                              Un evento religioso emblemático celebrado en febrero, donde miles de feligreses convergen en nuestro santuario católico para rendir homenaje. Esta festividad, con más de 290 años de historia, es un testimonio vivo de nuestra fe y tradiciones.
+                          </p>
+                          <ul class="list-group list-group-flush">
+                              <li class="list-group-item">Procesiones solemnes y misas especiales</li>
+                              <li class="list-group-item">Conciertos y danzas típicas</li>
+                              <li class="list-group-item">Ferias gastronómicas con sabores locales</li>
+                              <li class="list-group-item">Peregrinación anual con más de 2,000 visitantes</li>
+                          </ul>
+                      </div>
+                  </div>
               </div>
-              <img
-              src="{{ url_for('static', filename='img/cristo.jpg') }}"
-              alt="Ilustración de festividades"
-              class="legend-image">         
-              <h5>Fiesta Patronal del Santo Cristo de Guavatá</h5>
-              <p>
-                Un evento religioso emblemático celebrado en febrero, donde
-                miles de feligreses convergen en nuestro santuario católico para
-                rendir homenaje. Esta festividad, con más de 290 años de
-                historia, es un testimonio vivo de nuestra fe y tradiciones.
-              </p>
-              <ul>
-                <li>Procesiones solemnes y misas especiales</li>
-                <li>Conciertos y danzas típicas</li>
-                <li>Ferias gastronómicas con sabores locales</li>
-                <li>Peregrinación anual con más de 2,000 visitantes</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="culture-card">
-              <div class="culture-card-header">
-                <h3>Atractivos Naturales</h3>
+              <div class="col-md-4 mb-4 fade-in-up">
+                  <div class="card h-100">
+                      <div class="card-header bg-primary text-white">
+                          <h3 class="mb-0">Atractivos Naturales</h3>
+                      </div>
+                      <img src="{{ url_for('static', filename='img/quebraalejo.jpg') }}" class="card-img-top" alt="Ilustración de Atractivos Visuales">
+                      <div class="card-body">
+                          <h5 class="card-title">Paisajes Montañosos y Ríos Cristalinos</h5>
+                          <p class="card-text">
+                              Guavatá se engalana con una belleza natural incomparable, ofreciendo a visitantes y lugareños experiencias únicas en medio de la naturaleza santandereana.
+                          </p>
+                          <ul class="list-group list-group-flush">
+                              <li class="list-group-item">Senderos naturales para caminatas y exploración</li>
+                              <li class="list-group-item">Cascadas de agua cristalina</li>
+                              <li class="list-group-item">Vistas panorámicas breathtaking</li>
+                              <li class="list-group-item">Oportunidades para ecoturismo y fotografía</li>
+                          </ul>
+                          <p class="card-text mt-3">
+                              Estos atractivos no solo son un deleite visual, sino que forman parte integral de nuestra identidad cultural y conexión con la tierra.
+                          </p>
+                      </div>
+                  </div>
               </div>
-              <img 
-              src="{{ url_for('static', filename='img/moan.jpg') }}"
-              alt="Ilustración de Atractivos Visuales"
-              class="legend-image">
-              <h5>Paisajes Montañosos y Ríos Cristalinos</h5>
-              <p>
-                Guavatá se engalana con una belleza natural incomparable,
-                ofreciendo a visitantes y lugareños experiencias únicas en medio
-                de la naturaleza santandereana.
-              </p>
-              <ul>
-                <li>Senderos naturales para caminatas y exploración</li>
-                <li>Cascadas de agua cristalina</li>
-                <li>Vistas panorámicas breathtaking</li>
-                <li>Oportunidades para ecoturismo y fotografía</li>
-              </ul>
-              <p>
-                Estos atractivos no solo son un deleite visual, sino que forman
-                parte integral de nuestra identidad cultural y conexión con la
-                tierra.
-              </p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="culture-card">
-              <div class="culture-card-header">
-                <h3>La Leyenda del Mohán</h3>
+              <div class="col-md-4 mb-4 fade-in-up">
+                  <div class="card h-100">
+                      <div class="card-header bg-primary text-white">
+                          <h3 class="mb-0">La Leyenda del Mohán</h3>
+                      </div>
+                      <img src="{{ url_for('static', filename='img/mohan.jpg') }}" class="card-img-top" alt="Ilustración del Mohán">
+                      <div class="card-body">
+                          <h5 class="card-title">Guardián Místico de las Aguas</h5>
+                          <p class="card-text">
+                              Entre las leyendas más fascinantes de Guavatá, el Mohán se alza como un personaje mítico que cautiva la imaginación y respeto de generaciones.
+                          </p>
+                          <ul class="list-group list-group-flush">
+                              <li class="list-group-item">Protector de la naturaleza y los tesoros ocultos</li>
+                              <li class="list-group-item">Habita cerca de ríos y cuerpos de agua</li>
+                              <li class="list-group-item">Simboliza la dualidad de la belleza y el peligro natural</li>
+                              <li class="list-group-item">Personifica la conexión profunda entre la comunidad y su entorno</li>
+                          </ul>
+                          <p class="card-text mt-3">
+                              Esta leyenda no solo entretiene, sino que también enseña el respeto por la naturaleza y las tradiciones orales de nuestro pueblo.
+                          </p>
+                      </div>
+                  </div>
               </div>
-              <img
-                src="/app/static/img/mohan.jpg"
-                alt="Ilustración del Mohán"
-                class="legend-image"
-              />
-              <h5>Guardián Místico de las Aguas</h5>
-              <p>
-                Entre las leyendas más fascinantes de Guavatá, el Mohán se alza
-                como un personaje mítico que cautiva la imaginación y respeto de
-                generaciones.
-              </p>
-              <ul>
-                <li>Protector de la naturaleza y los tesoros ocultos</li>
-                <li>Habita cerca de ríos y cuerpos de agua</li>
-                <li>
-                  Simboliza la dualidad de la belleza y el peligro natural
-                </li>
-                <li>
-                  Personifica la conexión profunda entre la comunidad y su
-                  entorno
-                </li>
-              </ul>
-              <p>
-                Esta leyenda no solo entretiene, sino que también enseña el
-                respeto por la naturaleza y las tradiciones orales de nuestro
-                pueblo.
-              </p>
-            </div>
           </div>
-        </div>
       </div>
-    </section>
-    <section id="galeria" class="section bg-light">
-      <div class="container">
-        <h2 class="text-center mb-5">Galería de Imágenes</h2>
-        <div class="row gallery">
-          <div class="col-md-4">
-            <img
-              src="/app/static/img/quebraalejo.jpg"
-              alt="Paisaje de Guavatá"
-              class="img-fluid rounded"
-            />
-          </div>
-          <div class="col-md-4">
-            <img
-              src="/placeholder.svg?height=200&width=300"
-              alt="Plaza principal"
-              class="img-fluid rounded"
-            />
-          </div>
-          <div class="col-md-4">
-            <img
-              src="/placeholder.svg?height=200&width=300"
-              alt="Festividades locales"
-              class="img-fluid rounded"
-            />
-          </div>
-          <div class="col-md-4">
-            <img
-              src="/placeholder.svg?height=200&width=300"
-              alt="Artesanías típicas"
-              class="img-fluid rounded"
-            />
-          </div>
-          <div class="col-md-4">
-            <img
-              src="/placeholder.svg?height=200&width=300"
-              alt="Gastronomía local"
-              class="img-fluid rounded"
-            />
-          </div>
-          <div class="col-md-4">
-            <img
-              src="/placeholder.svg?height=200&width=300"
-              alt="Naturaleza circundante"
-              class="img-fluid rounded"
-            />
-          </div>
+  </section>
+  <section id="galeria" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Galería</h2>
+            <div class="row">
+                {% for galeria in imagenes %}
+                <div class="col-md-4 mb-4 fade-in-up">
+                    <div class="card h-100 shadow border-0 rounded-3 overflow-hidden">
+                        <div class="position-relative overflow-hidden">
+                            {% if galeria.imagenes %}
+                            {% set direccion = 'img/' + galeria.imagenes %}
+                            <img class="galeryimg" src="{{ url_for('static', filename=direccion) }}" alt="{{ galeria.title }}">
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ galeria.title }}</h5>
+                            <p class="card-text">{{ galeria.descrip }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-      </div>
-    </section>
+  </section>
 
     <section id="contacto" class="section">
-      <div class="container">
-        <h2 class="text-center mb-5">Contáctanos</h2>
-        <div class="row">
-          <div class="col-md-6 mx-auto">
-            <form>
-              <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="nombre" required />
-              </div>
-              <div class="mb-3">
-                <label for="email" class="form-label">Correo Electrónico</label>
-                <input type="email" class="form-control" id="email" required />
-              </div>
-              <div class="mb-3">
-                <label for="mensaje" class="form-label">Mensaje</label>
-                <textarea
-                  class="form-control"
-                  id="mensaje"
-                  rows="4"
-                  required
-                ></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary">
-                Enviar Mensaje
-              </button>
-            </form>
-          </div>
+        <div class="container">
+            <h2 class="section-title fade-in-up">Contáctanos</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8 fade-in-up">
+                    <form action="{{ url_for('contactanos.add') }}" method="post" enctype="multipart/form-data" class="contact-form">
+                        <div class="mb-3">
+                            <label for="nombrecon" class="form-label">Nombre:</label>
+                            <input type="text" id="nombrecon" name="nombrecon" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="correocon" class="form-label">Correo:</label>
+                            <input type="email" id="correocon" name="correocon" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="r1" class="form-label">¿Cómo te pareció la historia de Guavatá?:</label>
+                            <input type="text" id="r1" name="r1" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="r2" class="form-label">¿Qué opinas sobre las imágenes presentadas?:</label>
+                            <input type="text" id="r2" name="r2" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="r3" class="form-label">¿Cómo valoras la cultura de Guavatá?:</label>
+                            <input type="text" id="r3" name="r3" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="r4" class="form-label">¿Qué más te gustaría conocer?:</label>
+                            <input type="text" id="r4" name="r4" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="r5" class="form-label">¿Te gustó todo lo que encontraste aquí?:</label>
+                            <input type="text" id="r5" name="r5" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                            <label for="comen" class="form-label">Comentarios adicionales:</label>
+                            <textarea id="comen" name="comen" class="form-control" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <footer class="bg-dark text-white text-center py-3">
-      <p>&copy; 2023 Municipio de Guavatá. Todos los derechos reservados.</p>
+    <footer class="text-center">
+        <p>&copy; 2024 Municipio de Guavatá. Todos los derechos reservados.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -495,6 +550,27 @@
             img.alt = alt;
             expandedImage.classList.add('active');
         }
+
+        // Animación de aparición al hacer scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in-up');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+                observer.observe(element);
+            });
+        });
     </script>
-  </body>
+</body>
 </html>
