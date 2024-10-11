@@ -16,14 +16,15 @@ def create_app():
     login_manager.login_view = 'auth.login'
 
     @login_manager.user_loader
-    def load_user(user_idu):
+    def load_user(user_id):
         from .models.user import User
-        return User.query.get(int(user_idu))
+        return User.query.get(int(user_id))
 
-    from app.routes import register, galeRoutes, contRoutes
+    from app.routes import register, galeRoutes, contRoutes, paginaRoutes
     app.register_blueprint(register.bp)
     app.register_blueprint(galeRoutes.bp)
     app.register_blueprint(contRoutes.bp)
+    app.register_blueprint(paginaRoutes.bp)
 
     from app.routes.auth import auth_bp
     app.register_blueprint(auth_bp)
