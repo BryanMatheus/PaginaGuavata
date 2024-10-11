@@ -8,7 +8,7 @@ body {
 
 .sidebar {
     width: 200px;
-    background: linear-gradient(180deg, #2e7d32, #1b5e20); /* Degradado verde oscuro */
+    background: linear-gradient(180deg, #ff7043, #43a047); /* Degradado naranja a verde */
     padding: 15px;
     height: 100vh;
     display: flex;
@@ -105,56 +105,73 @@ body {
 
 
 
-/* Estilos de la tabla */
+/* Estilos generales de la tabla */
 table {
-    width: 80%; /* Ancho de la tabla */
-    margin: 20px auto;
+    width: 85%; /* Un poco más ancha */
+    margin: 30px auto;
     border-collapse: collapse;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Sombra ligera */
-    border-radius: 12px; /* Bordes redondeados */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+    border-radius: 15px; /* Bordes más redondeados */
     overflow: hidden;
-    background-color: #fff; /* Fondo blanco */
+    background-color: #f7f7f7; /* Fondo claro */
 }
 
 /* Encabezados */
 th {
-    background-color: #43a047; /* Verde fuerte para encabezados */
-    color: #fff; /* Texto blanco */
-    font-size: 16px;
-    padding: 14px;
+    background-color: #ff7043; /* Naranja más vivo */
+    color: #ffffff;
+    font-size: 17px;
+    padding: 16px 20px; /* Más espacio alrededor del texto */
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 4px solid #ffa726; /* Línea naranja bajo los encabezados */
+    letter-spacing: 1.2px;
+    border-bottom: 5px solid #43a047; /* Línea verde más gruesa */
 }
 
 /* Celdas */
 td {
-    background-color: #ffffff; /* Fondo blanco */
-    color: #333; /* Texto oscuro */
-    padding: 15px;
-    border-bottom: 1px solid #e0e0e0; /* Línea de separación gris clara */
+    background-color: #ffffff; /* Blanco puro para celdas */
+    color: #555; /* Texto gris oscuro */
+    padding: 16px 20px; /* Más espacio y mejor legibilidad */
+    border-bottom: 1px solid #dddddd; /* Línea gris más clara */
     text-align: center;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 /* Filas */
 tr {
-    transition: background-color 0.3s ease;
+    transition: background-color 0.25s ease, transform 0.2s ease; /* Animación suave en hover */
 }
 
 /* Hover en filas */
 tr:hover {
-    background-color: #c8e6c9; /* Verde claro al pasar el ratón */
+    background-color: #e6f5e8; /* Verde claro al pasar el ratón */
+    transform: translateY(-2px); /* Leve elevación al hover */
+}
+
+/* Primera fila (encabezado) */
+thead tr {
+    border-radius: 15px 15px 0 0; /* Redondear bordes superiores */
+}
+
+/* Ultima fila */
+tbody tr:last-child td {
+    border-bottom: none; /* Quitar borde inferior de la última fila */
 }
 
 /* Título de la tabla */
 table caption {
-    font-size: 26px;
-    margin: 15px 0;
-    color: #43a047; /* Verde del título */
+    font-size: 28px;
+    margin: 20px 0;
+    color: #43a047; /* Verde intenso para el título */
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.8px;
 }
+
+/* Alternancia de colores en las filas */
+tbody tr:nth-child(even) {
+    background-color: #f3f3f3; /* Fondo gris suave para filas pares */
+}
+ 
