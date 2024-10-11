@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='side.css') }}" />
     <title>Editar imagen</title>
 </head>
 <body>
-    <h1>Editar imagen</h1>
-    <form action="{{ url_for('galeria.edit', id=galeria.id) }}" method="post">
-
-        <label for="title">Titulo:</label>
-        <input type="text" id="title" name="title" value="{{ galeria.title }}" required>
-        <label for="descrip">Descripcion:</label>
-        <input type="text" id="descrip" name="descrip" value="{{ galeria.descrip }}" required>
-        <button type="submit">Actualizar imagen</button>
-    </form>
+    <div class="sidebar">
+        <h2>Menú</h2>
+        <a href="{{ url_for('galeria.index') }}">Galería</a>
+        <a href="{{ url_for('galeria.add') }}">Agregar Imagen</a>
+        <a href="{{ url_for('contactanos.index') }}">Contactanos</a>
+    </div>
+    <div class="content">
+        <h1>Editar imagen</h1>
+        <form action="{{ url_for('galeria.edit', id=galeria.id) }}" method="post">
+            <label for="title">Titulo:</label>
+            <input type="text" id="title" name="title" value="{{ galeria.title }}" required>
+            <label for="descrip">Descripcion:</label>
+            <input type="text" id="descrip" name="descrip" value="{{ galeria.descrip }}" required>
+            <button type="submit">Actualizar imagen</button>
+        </form>
+    </div>
 </body>
 </html>

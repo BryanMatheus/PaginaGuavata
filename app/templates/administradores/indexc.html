@@ -4,42 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='side.css') }}" />
     <title>Contactanos</title>
 </head>
 <body>
-    <h1>Contactanos</h1>
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Preguna 1</th>
-            <th>Pregunta 2</th>
-            <th>Pregunta 3</th>
-            <th>Pregunta 4</th>
-            <th>Pregunta 5</th>
-            <th>Comentarios adicionales</th>
-            <th>Acciones</th>
-        </tr>
-        {% for contactanos in data %}
+    <div class="sidebar">
+        <h2>Menú</h2>
+        <a href="{{ url_for('galeria.index') }}">Galería</a>
+        <a href="{{ url_for('galeria.add') }}">Agregar Imagen</a>
+        <a href="{{ url_for('contactanos.index') }}">Contactanos</a>
+    </div>
+    <div class="content">
+        <h1>Contactanos</h1>
+        <table>
             <tr>
-                <td>{{ contactanos.id }}</td>
-                <td>{{ contactanos.nombrecon }}</td>
-                <td>{{ contactanos.correocon }}</td>
-                <td>{{ contactanos.r1 }}</td>
-                <td>{{ contactanos.r2 }}</td>
-                <td>{{ contactanos.r3 }}</td>
-                <td>{{ contactanos.r4 }}</td>
-                <td>{{ contactanos.r5 }}</td>
-                <td>{{ contactanos.comen }}</td>
-                <td>
-                    <a href="{{ url_for('contactanos.delete', id=contactanos.id) }}">Eliminar</a> 
-                </td>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Pregunta 1</th>
+                <th>Pregunta 2</th>
+                <th>Pregunta 3</th>
+                <th>Pregunta 4</th>
+                <th>Pregunta 5</th>
+                <th>Comentarios adicionales</th>
+                <th>Acciones</th>
             </tr>
-        {% endfor %}
-    </table>
-    <a href="{{ url_for('galeria.index') }}">Listado galeria</a>
-    <a href="{{ url_for('galeria.add') }}">Agregar imagen</a>
+            {% for contactanos in data %}
+                <tr>
+                    <td>{{ contactanos.id }}</td>
+                    <td>{{ contactanos.nombrecon }}</td>
+                    <td>{{ contactanos.correocon }}</td>
+                    <td>{{ contactanos.r1 }}</td>
+                    <td>{{ contactanos.r2 }}</td>
+                    <td>{{ contactanos.r3 }}</td>
+                    <td>{{ contactanos.r4 }}</td>
+                    <td>{{ contactanos.r5 }}</td>
+                    <td>{{ contactanos.comen }}</td>
+                    <td>
+                        <a href="{{ url_for('contactanos.delete', id=contactanos.id) }}">Eliminar</a> 
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
 </body>
 </html>

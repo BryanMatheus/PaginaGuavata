@@ -4,21 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='side.css') }}" />
     <title>Agregar imagen</title>
 </head>
 <body>
-    <h1>Agregar imagen</h1>
-    <form action="{{ url_for('galeria.add') }}" method="post" enctype="multipart/form-data">
-        <label for="title"> Titulo:</label>
-        <input type="text" id="title" name="title" required>
-        <label for="descrip">Descripcion:</label>
-        <input type="text" id="descrip" name="descrip" required>
-        <label for="imagenes">Imagen:</label>
-        <input type="file" id="imagenes" name="imagenes">
-        <button type="submit">Agregar imagen</button>
-    </form>
-    <a href="{{ url_for('galeria.index') }}">Listado galeria</a>
-    <a href="{{ url_for('contactanos.index') }}">Listado contactanos</a>
+    <div class="sidebar">
+        <h2>Menú</h2>
+        <a href="{{ url_for('galeria.index') }}">Galería</a>
+        <a href="{{ url_for('galeria.add') }}">Agregar Imagen</a>
+        <a href="{{ url_for('contactanos.index') }}">Contactanos</a>
+    </div>
+    <div class="content">
+        <h1>Agregar imagen</h1>
+        <form action="{{ url_for('galeria.add') }}" method="post" enctype="multipart/form-data">
+            <label for="title"> Titulo:</label>
+            <input type="text" id="title" name="title" required>
+            <label for="descrip">Descripcion:</label>
+            <input type="text" id="descrip" name="descrip" required>
+            <label for="imagenes">Imagen:</label>
+            <input type="file" id="imagenes" name="imagenes">
+            <button type="submit">Agregar imagen</button>
+        </form>
+    </div>
 </body>
 </html>
