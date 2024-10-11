@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guavatá - Nuestro Hermoso Pueblo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <style>
-        .section {
+       .section {
             padding: 80px 0;
+            margin-top: 50px;
         }
         .hero {
-            background-image: url('/app/static/img/guavatafondo.jpg');
+            background-image: url("/app/static/img/guavatafondo.jpg");
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -23,7 +27,7 @@
         }
         .hero h1 {
             font-size: 4rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         .bubbles-section {
             background-color: #f8f9fa;
@@ -43,170 +47,457 @@
             text-align: center;
             padding: 20px;
             transition: transform 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 3px solid #808080;
+            cursor: pointer;
         }
         .bubble:hover {
             transform: scale(1.05);
         }
-        .gallery img {
+        .expanded-image {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 200px;
-            object-fit: cover;
-            margin-bottom: 15px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
+        .expanded-image.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .expanded-image img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+        .expanded-image.active img {
+            transform: scale(1);
+        }
+      .culture-card-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .culture-card {
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: 30px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .culture-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .culture-card-header {
+        background-color: #445440;
+        color: white;
+        padding: 20px;
+        margin: -30px -30px 20px -30px;
+        border-radius: 15px 15px 0 0;
+        position: relative;
+      }
+
+      .culture-card-header h3 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: bold;
+      }
+
+      .culture-card-header::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #5a5c5e;
+      }
+
+      .culture-card h5 {
+        color: #000000;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #000000;
+        padding-bottom: 10px;
+        display: inline-block;
+      }
+
+      .culture-card-content {
+        flex-grow: 1;
+      }
+
+      .legend-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+      }
+
+      .imghistory {
+        width: 70%; 
+        height: auto;
+        border-radius: 5px;
+        margin-left: 15%;
+    }
+
+     .imghistory {
+     transition: transform 0.3s ease; 
+     }
+
+     .imghistory:hover {
+     transform: scale(1.1); 
+     }
+
+
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Guavatá</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#inicio">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#historia">Historia</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#cultura">Cultura</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#galeria">Galería</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contacto">Contáctanos</a>
-                    </li>
-                </ul>
-            </div>
+      <div class="container">
+        <a class="navbar-brand" href="#">Guavatá</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#inicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#historia">Historia</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#cultura">Cultura</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#galeria">Galería</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contacto">Contáctanos</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <section id="inicio" class="hero">
-        <div class="container">
-            <h1>Bienvenidos a Guavatá</h1>
-            <p class="lead mb-5">Descubre la belleza y encanto de nuestro pueblo</p>
-        </div>
+      <div class="container">
+        <h1>Bienvenidos a Guavatá</h1>
+        <p class="lead mb-5">Descubre la belleza y encanto de nuestro pueblo</p>
+      </div>
     </section>
 
     <section class="bubbles-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-4 mb-4">
-                    <div class="bubble">
-                        <p>Naturaleza Exuberante</p>
+                    <div class="bubble" onclick="expandImage('/app/static/img/quebraalejo.jpg', 'Altura de Guavatá')">
+                        <p>Altura de Guavatá</p>
                     </div>
-                    <p class="text-center">Explora nuestros hermosos paisajes y senderos naturales</p>
+                    <p class="text-center">
+                        Explora nuestros hermosos paisajes y senderos naturales
+                    </p>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="bubble">
-                        <p>Rica Cultura</p>
+                    <div class="bubble" onclick="expandImage('/app/static/img/poblacion.jpg', 'Población de Guavatá')">
+                        <p>Población de Guavatá</p>
                     </div>
-                    <p class="text-center">Sumérgete en nuestras tradiciones y festividades únicas</p>
+                    <p class="text-center">
+                        Sumérgete en nuestras tradiciones y festividades únicas
+                    </p>
                 </div>
                 <div class="col-md-4 mb-4">
-                    <div class="bubble">
-                        <p>Hospitalidad Santandereana</p>
+                    <div class="bubble" onclick="expandImage('/app/static/img/gastronomia-guavata.jpg', 'Gastronomía de Guavatá')">
+                        <p>Gastronomía de Guavatá</p>
                     </div>
-                    <p class="text-center">Disfruta de la calidez y amabilidad de nuestra gente</p>
+                    <p class="text-center">
+                        Disfruta de la calidez y amabilidad de nuestra gente
+                    </p>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="expanded-image" onclick="this.classList.remove('active')">
+        <img src="" alt="Imagen ampliada">
+    </div>
+
 
     <section id="historia" class="section bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Historia</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="/placeholder.svg?height=300&width=400" alt="Imagen histórica de Guavatá" class="img-fluid rounded">
-                </div>
-                <div class="col-md-6">
-                    <p>Guavatá es un municipio colombiano ubicado en el departamento de Santander. Su historia se remonta a la época precolombina, cuando la región estaba habitada por indígenas Guanes. El pueblo fue fundado oficialmente en el siglo XVII y desde entonces ha sido un importante centro agrícola y cultural de la región.</p>
-                    <p>A lo largo de los años, Guavatá ha preservado su rica herencia cultural y natural, convirtiéndose en un destino atractivo para quienes buscan experimentar la autenticidad de la vida rural colombiana.</p>
-                </div>
-            </div>
+      <div class="container">
+        <h1 class="text-center mb-5 ">HISTORIA</h1>
+        <div class="row">
+          <div class="col-md-6">
+            <img
+              src="/app/static/img/jimenez1.jpg"
+              alt="Imagen histórica de Guavatá"
+              class="imghistory"
+            />
+          </div>
+          <div class="col-md-6">
+            <h2>Raices Historicas</h2>
+            <p>
+              Guavatá es un municipio colombiano ubicado en el departamento de
+              Santander. Su historia se remonta a la época precolombina, cuando
+              la región estaba habitada por indígenas Guanes. El pueblo fue
+              fundado oficialmente en el siglo XVII y desde entonces ha sido un
+              importante centro agrícola y cultural de la región.
+            </p>
+            <p>
+              A lo largo de los años, Guavatá ha preservado su rica herencia
+              cultural y natural, convirtiéndose en un destino atractivo para
+              quienes buscan experimentar la autenticidad de la vida rural
+              colombiana.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
+
 
     <section id="cultura" class="section">
-        <div class="container">
-            <h2 class="text-center mb-5">Cultura</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <h3>Tradiciones</h3>
-                    <p>Guavatá es conocida por sus coloridas fiestas patronales, danzas folclóricas y artesanías tradicionales que reflejan la rica herencia cultural de la región.</p>
-                </div>
-                <div class="col-md-4">
-                    <h3>Gastronomía</h3>
-                    <p>La cocina local ofrece deliciosos platos típicos como el sancocho, la arepa santandereana y el cabro al horno, que deleitan a locales y visitantes por igual.</p>
-                </div>
-                <div class="col-md-4">
-                    <h3>Música</h3>
-                    <p>La música tradicional, como el torbellino y la guabina, sigue siendo una parte importante de la identidad cultural de Guavatá, con grupos locales que mantienen vivas estas tradiciones.</p>
-                </div>
+      <div class="container">
+        <h2
+          class="text-center mb-5"
+          style="
+            font-size: 2.5rem;
+            color: #111314;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+          "
+        >
+          Riquezas Culturales
+        </h2>
+        <p
+          class="text-center mb-5"
+          style="
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+          "
+        >
+          La cultura de Guavatá, Santander, es una mezcla vibrante de
+          tradiciones indígenas y españolas, reflejada en sus festividades,
+          patrimonio arquitectónico, gastronomía y mitos. Descubre la esencia de
+          nuestro pueblo a través de estas facetas culturales únicas.
+        </p>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="culture-card">
+              <div class="culture-card-header">
+                <h3>Festividades y Tradiciones</h3>
+              </div>
+              <img
+                src="/app/static/img/cristo.jpg"
+                alt="Ilustración de festividades"
+                class="legend-image"
+              />
+              <h5>Fiesta Patronal del Santo Cristo de Guavatá</h5>
+              <p>
+                Un evento religioso emblemático celebrado en febrero, donde
+                miles de feligreses convergen en nuestro santuario católico para
+                rendir homenaje. Esta festividad, con más de 290 años de
+                historia, es un testimonio vivo de nuestra fe y tradiciones.
+              </p>
+              <ul>
+                <li>Procesiones solemnes y misas especiales</li>
+                <li>Conciertos y danzas típicas</li>
+                <li>Ferias gastronómicas con sabores locales</li>
+                <li>Peregrinación anual con más de 2,000 visitantes</li>
+              </ul>
             </div>
+          </div>
+          <div class="col-md-4">
+            <div class="culture-card">
+              <div class="culture-card-header">
+                <h3>Atractivos Naturales</h3>
+              </div>
+                <img
+                src="/app/static/img/moan.jpg"
+                alt="Ilustración de Atractivos Visuales"
+                class="legend-image"
+              />
+              <h5>Paisajes Montañosos y Ríos Cristalinos</h5>
+              <p>
+                Guavatá se engalana con una belleza natural incomparable,
+                ofreciendo a visitantes y lugareños experiencias únicas en medio
+                de la naturaleza santandereana.
+              </p>
+              <ul>
+                <li>Senderos naturales para caminatas y exploración</li>
+                <li>Cascadas de agua cristalina</li>
+                <li>Vistas panorámicas breathtaking</li>
+                <li>Oportunidades para ecoturismo y fotografía</li>
+              </ul>
+              <p>
+                Estos atractivos no solo son un deleite visual, sino que forman
+                parte integral de nuestra identidad cultural y conexión con la
+                tierra.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="culture-card">
+              <div class="culture-card-header">
+                <h3>La Leyenda del Mohán</h3>
+              </div>
+              <img
+                src="/app/static/img/mohan.jpg"
+                alt="Ilustración del Mohán"
+                class="legend-image"
+              />
+              <h5>Guardián Místico de las Aguas</h5>
+              <p>
+                Entre las leyendas más fascinantes de Guavatá, el Mohán se alza
+                como un personaje mítico que cautiva la imaginación y respeto de
+                generaciones.
+              </p>
+              <ul>
+                <li>Protector de la naturaleza y los tesoros ocultos</li>
+                <li>Habita cerca de ríos y cuerpos de agua</li>
+                <li>
+                  Simboliza la dualidad de la belleza y el peligro natural
+                </li>
+                <li>
+                  Personifica la conexión profunda entre la comunidad y su
+                  entorno
+                </li>
+              </ul>
+              <p>
+                Esta leyenda no solo entretiene, sino que también enseña el
+                respeto por la naturaleza y las tradiciones orales de nuestro
+                pueblo.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-
     <section id="galeria" class="section bg-light">
-        <div class="container">
-            <h2 class="text-center mb-5">Galería de Imágenes</h2>
-            <div class="row gallery">
-                <div class="col-md-4">
-                    <img src="/placeholder.svg?height=200&width=300" alt="Paisaje de Guavatá" class="img-fluid rounded">
-                </div>
-                <div class="col-md-4">
-                    <img src="/placeholder.svg?height=200&width=300" alt="Plaza principal" class="img-fluid rounded">
-                </div>
-                <div class="col-md-4">
-                    <img src="/placeholder.svg?height=200&width=300" alt="Festividades locales" class="img-fluid rounded">
-                </div>
-                <div class="col-md-4">
-                    <img src="/placeholder.svg?height=200&width=300" alt="Artesanías típicas" class="img-fluid rounded">
-                </div>
-                <div class="col-md-4">
-                    <img src="/placeholder.svg?height=200&width=300" alt="Gastronomía local" class="img-fluid rounded">
-                </div>
-                <div class="col-md-4">
-                    <img src="/placeholder.svg?height=200&width=300" alt="Naturaleza circundante" class="img-fluid rounded">
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="text-center mb-5">Galería de Imágenes</h2>
+        <div class="row gallery">
+          <div class="col-md-4">
+            <img
+              src="/app/static/img/quebraalejo.jpg"
+              alt="Paisaje de Guavatá"
+              class="img-fluid rounded"
+            />
+          </div>
+          <div class="col-md-4">
+            <img
+              src="/placeholder.svg?height=200&width=300"
+              alt="Plaza principal"
+              class="img-fluid rounded"
+            />
+          </div>
+          <div class="col-md-4">
+            <img
+              src="/placeholder.svg?height=200&width=300"
+              alt="Festividades locales"
+              class="img-fluid rounded"
+            />
+          </div>
+          <div class="col-md-4">
+            <img
+              src="/placeholder.svg?height=200&width=300"
+              alt="Artesanías típicas"
+              class="img-fluid rounded"
+            />
+          </div>
+          <div class="col-md-4">
+            <img
+              src="/placeholder.svg?height=200&width=300"
+              alt="Gastronomía local"
+              class="img-fluid rounded"
+            />
+          </div>
+          <div class="col-md-4">
+            <img
+              src="/placeholder.svg?height=200&width=300"
+              alt="Naturaleza circundante"
+              class="img-fluid rounded"
+            />
+          </div>
         </div>
+      </div>
     </section>
 
     <section id="contacto" class="section">
-        <div class="container">
-            <h2 class="text-center mb-5">Contáctanos</h2>
-            <div class="row">
-                <div class="col-md-6 mx-auto">
-                    <form>
-                        <div class="mb-3">
-                            <label for="nombre" class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="nombre" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Correo Electrónico</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="mensaje" class="form-label">Mensaje</label>
-                            <textarea class="form-control" id="mensaje" rows="4" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-                    </form>
-                </div>
-            </div>
+      <div class="container">
+        <h2 class="text-center mb-5">Contáctanos</h2>
+        <div class="row">
+          <div class="col-md-6 mx-auto">
+            <form>
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" required />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" required />
+              </div>
+              <div class="mb-3">
+                <label for="mensaje" class="form-label">Mensaje</label>
+                <textarea
+                  class="form-control"
+                  id="mensaje"
+                  rows="4"
+                  required
+                ></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Enviar Mensaje
+              </button>
+            </form>
+          </div>
         </div>
+      </div>
     </section>
 
     <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2023 Municipio de Guavatá. Todos los derechos reservados.</p>
+      <p>&copy; 2023 Municipio de Guavatá. Todos los derechos reservados.</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <script>
+        function expandImage(src, alt) {
+            const expandedImage = document.querySelector('.expanded-image');
+            const img = expandedImage.querySelector('img');
+            img.src = src;
+            img.alt = alt;
+            expandedImage.classList.add('active');
+        }
+    </script>
+  </body>
 </html>
