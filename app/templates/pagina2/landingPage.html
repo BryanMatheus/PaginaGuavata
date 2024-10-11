@@ -14,7 +14,7 @@
             margin-top: 50px;
         }
         .hero {
-            background-image: url("/app/static/img/guavatafondo.jpg");
+            background-image: url("{{ url_for('static', filename='img/guavatafondo.jpg') }}");
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -258,10 +258,9 @@
         <div class="row">
           <div class="col-md-6">
             <img
-              src="/app/static/img/jimenez1.jpg"
-              alt="Imagen histórica de Guavatá"
-              class="imghistory"
-            />
+            src="{{ url_for('static', filename='img/jimenez1.jpg') }}" 
+            alt="Imagen histórica de Guavatá"
+            class="imghistory">
           </div>
           <div class="col-md-6">
             <h2>Raices Historicas</h2>
@@ -318,10 +317,9 @@
                 <h3>Festividades y Tradiciones</h3>
               </div>
               <img
-                src="/app/static/img/cristo.jpg"
-                alt="Ilustración de festividades"
-                class="legend-image"
-              />
+              src="{{ url_for('static', filename='img/cristo.jpg') }}"
+              alt="Ilustración de festividades"
+              class="legend-image">         
               <h5>Fiesta Patronal del Santo Cristo de Guavatá</h5>
               <p>
                 Un evento religioso emblemático celebrado en febrero, donde
@@ -342,11 +340,10 @@
               <div class="culture-card-header">
                 <h3>Atractivos Naturales</h3>
               </div>
-                <img
-                src="/app/static/img/moan.jpg"
-                alt="Ilustración de Atractivos Visuales"
-                class="legend-image"
-              />
+              <img 
+              src="{{ url_for('static', filename='img/moan.jpg') }}"
+              alt="Ilustración de Atractivos Visuales"
+              class="legend-image">
               <h5>Paisajes Montañosos y Ríos Cristalinos</h5>
               <p>
                 Guavatá se engalana con una belleza natural incomparable,
