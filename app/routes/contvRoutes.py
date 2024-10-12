@@ -7,7 +7,7 @@ bp = Blueprint('contactanos', __name__)
 @bp.route('/contactanos')
 def index():
     data = Contactanos.query.all()
-    return render_template('administradores/indexc.html', data=data)
+    return render_template('/pagina2/landingPage.html', data=data)
 
 @bp.route('/addcontacto', methods=['GET', 'POST'])
 def add():
@@ -36,4 +36,4 @@ def delete(id):
     db.session.delete(contactanos)
     db.session.commit()
 
-    return redirect(url_for('contactanos.index'))
+    return redirect(url_for('pagina.admincon'))

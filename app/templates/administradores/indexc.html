@@ -12,55 +12,39 @@
 <body>
     <div class="container">
         <div class="sidebar">
-            <h2>Menú</h2>
-            <a href="{{ url_for('galeria.index') }}">Galería</a>
+            <h2>Administrador</h2>
+            <a href="{{ url_for('pagina.admingal') }}">Galería</a>
             <a href="{{ url_for('galeria.add') }}">Agregar Imagen</a>
-            <a href="{{ url_for('contactanos.index') }}">Contactanos</a>
+            <a href="{{ url_for('pagina.admincon') }}">Contactanos</a>
         </div>
         <div class="content">
-            <div class="table_header">
+            <div class="header">
                 <h2>Contactanos</h2>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</i></th>
-                        <th>Nombre</i></th>
-                        <th>Correo</i></th>
-                        <th>Pregunta 1</i></th>
-                        <th>Pregunta 2</i></th>
-                        <th>Pregunta 3</i></th>
-                        <th>Pregunta 4</i></th>
-                        <th>Pregunta 5</i></th>
-                        <th>Comentarios</i></th>
-                        <th>Acciones</i></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for contactanos in data %}
-                    <tr>
-                        <td>{{ contactanos.id }}</td>
-                        <td>{{ contactanos.nombrecon }}</td>
-                        <td>{{ contactanos.correocon }}</td>
-                        <td>{{ contactanos.r1 }}</td>
-                        <td>{{ contactanos.r2 }}</td>
-                        <td>{{ contactanos.r3 }}</td>
-                        <td>{{ contactanos.r4 }}</td>
-                        <td>{{ contactanos.r5 }}</td>
-                        <td>{{ contactanos.comen }}</td>
-                        <td>
-                            <a href="{{ url_for('contactanos.delete', id=contactanos.id) }}">
-                                <i class="bi bi-trash" id="icons"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <div class="table_fotter">
-                <p>Total de filas: {{ data|length }}</p>
+            <div class="card-grid">
+                {% for contactanos in data %}
+                <div class="card">
+                    <div class="card-body">
+                        <h3>ID: {{ contactanos.id }}</h3>
+                        <p><strong>Nombre:</strong> {{ contactanos.nombrecon }}</p>
+                        <p><strong>Correo:</strong> {{ contactanos.correocon }}</p>
+                        <p><strong>Pregunta 1:</strong> {{ contactanos.r1 }}</p>
+                        <p><strong>Pregunta 2:</strong> {{ contactanos.r2 }}</p>
+                        <p><strong>Pregunta 3:</strong> {{ contactanos.r3 }}</p>
+                        <p><strong>Pregunta 4:</strong> {{ contactanos.r4 }}</p>
+                        <p><strong>Pregunta 5:</strong> {{ contactanos.r5 }}</p>
+                        <p><strong>Comentarios:</strong> {{ contactanos.comen }}</p>
+                        <a href="{{ url_for('contactanos.delete', id=contactanos.id) }}" class="delete-icon">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="footer">
+                <p>Total comentarios: {{ data|length }}</p>
             </div>
         </div>
-    </div>
+    </div>    
 </body>
 </html>

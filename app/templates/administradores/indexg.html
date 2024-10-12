@@ -7,51 +7,42 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <title>Galeria</title>
+    <title>Galería</title>
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
-            <h2>Menú</h2>
-            <a href="{{ url_for('galeria.index') }}">Galería</a>
+            <h2>Administrador</h2>
+            <a href="{{ url_for('pagina.admingal') }}">Galería</a>
             <a href="{{ url_for('galeria.add') }}">Agregar Imagen</a>
-            <a href="{{ url_for('contactanos.index') }}">Contactanos</a>
+            <a href="{{ url_for('pagina.admincon') }}">Contactanos</a>
         </div>
         <div class="content">
-            <div class="table_header">
+            <div class="header">
                 <h2>Galería</h2>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</i></th>
-                        <th>Título</i></th>
-                        <th>Descripción</i></th>
-                        <th>Acciones</i></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for galeria in data %}
-                    <tr>
-                        <td>{{ galeria.id }}</td>
-                        <td>{{ galeria.title }}</td>
-                        <td>{{ galeria.descrip }}</td>
-                        <td>
-                            <a href="{{ url_for('galeria.edit', id=galeria.id) }}">
-                                <i class="bi bi-pencil-square" id="icons"></i>
-                            </a>
-                            <a href="{{ url_for('galeria.delete', id=galeria.id) }}">
-                                <i class="bi bi-trash" id="icons"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            <div class="table_fotter">
-                <p>Total de filas: {{ data|length }}</p>
+            <div class="card-grid2">
+                {% for galeria in data %}
+                <div class="card2">
+                    <div class="card-body2">
+                        <h3>ID: {{ galeria.id }}</h3>
+                        <p><strong>Título:</strong> {{ galeria.title }}</p>
+                        <p><strong>Descripción:</strong> {{ galeria.descrip }}</p>
+                        <p><strong>Nombre de la Imagen:</strong> {{ galeria.imagenes }}</p>
+                        <a href="{{ url_for('galeria.edit', id=galeria.id) }}" class="edit-icon">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                        <a href="{{ url_for('galeria.delete', id=galeria.id) }}" class="delete-icon">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="footer">
+                <p>Total imagenes: {{ data|length }}</p>
             </div>
         </div>
-    </div>
+    </div>    
 </body>
 </html>

@@ -12,8 +12,18 @@ body {
     height: 100vh;
 }
 
-/* Sidebar */
+/* Estilos para el título */
+.header {
+    text-align: center; /* Centra el título */
+    margin-bottom: 20px;
+}
+
+/* Sidebar fija */
 .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: 250px;
     background-color: #333333; /* Fondo oscuro para el sidebar */
     padding: 25px;
@@ -44,28 +54,167 @@ body {
     color: #ffffff;
 }
 
-/* Content */
+/* Content con margen izquierdo para sidebar fija */
 .content {
-    flex-grow: 1;
+    margin-left: 270px; /* Margen para no superponer con la sidebar */
     padding: 40px;
     background-color: #ffffff; /* Fondo blanco para el contenido */
+    overflow-y: auto; 
 }
 
-/* Table Header */
-.table_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+/* Contenedor de tarjetas con 4 por fila */
+.card-grid2 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-top: 20px;
 }
 
-.table_header h2 {
+/* Tarjeta individual */
+.card2 {
+    margin-left: 25px;
+    background: linear-gradient(135deg, #f0f0f0, #fafafa);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); 
+    padding: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #dddddd; 
+}
+
+/* Hover para tarjeta */
+.card2:hover {
+    background-color: #ffffff;
+    transform: translateY(-10px); 
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); 
+}
+
+/* Contenido de la tarjeta */
+.card-body2 h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
     color: #333333;
-    font-size: 26px;
+    font-weight: bold;
 }
 
-.table_header button {
-    background-color: #333333; /* Botón oscuro */
+.card-body2 p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #555555;
+}
+
+.card-body2 p strong {
+    color: #333333;
+}
+
+
+/* Contenedor de tarjetas con 3 por fila */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Siempre 3 tarjetas por fila */
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Tarjeta individual */
+.card {
+    margin-left: 25px;
+    background: linear-gradient(135deg, #f0f0f0, #fafafa); /* Fondo con gradiente suave */
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+    padding: 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #dddddd; /* Borde para destacar */
+}
+
+/* Hover para tarjeta */
+.card:hover {
+    background-color: #ffffff; /* Fondo más claro en hover */
+    transform: translateY(-10px); /* Efecto de levantamiento más pronunciado */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); /* Sombra más grande al hacer hover */
+}
+
+/* Contenido de la tarjeta */
+.card-body h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333333;
+    font-weight: bold;
+}
+
+.card-body p {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #555555;
+}
+
+.card-body p strong {
+    color: #333333; /* Color más oscuro para los títulos */
+}
+
+/* Icono de eliminar */
+.delete-icon {
+    color: #333333;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+    font-size: 20px;
+}
+
+.delete-icon:hover {
+    color: orangered;
+}
+
+.edit-icon {
+    color: #333333;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+    font-size: 20px;
+}
+
+.edit-icon:hover {
+    color: green; /* Color rojo en hover */
+}
+
+
+
+/* Footer de las tarjetas */
+.footer {
+    margin-top: 20px;
+    text-align: right;
+    font-size: 14px;
+    color: #555555;
+}
+
+/* Transiciones suaves para botones y enlaces */
+button, a, input, select, .delete-icon {
+    transition: all 0.3s ease;
+}
+
+/* Estilo del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaciado entre elementos */
+    width: 400px; /* Establece un ancho fijo para el formulario */
+    margin: 0 auto; /* Centra el formulario en el contenedor */
+}
+
+label {
+    font-size: 16px;
+    color: #333333; /* Color del texto */
+}
+
+input[type="text"],
+input[type="file"] {
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #333333; 
     color: white;
     border: none;
     padding: 10px 20px;
@@ -75,93 +224,32 @@ body {
     transition: background 0.3s ease;
 }
 
-.table_header button:hover {
-    background-color: #555555;
+button:hover {
+    background-color: #555555; /* Cambia el fondo del botón al pasar el ratón */
 }
 
-.input_search {
+
+
+.content2 {
+    flex: 1; /* Esto hará que el contenido ocupe el espacio restante */
     display: flex;
-    align-items: center;
+    flex-direction: column; /* Alinea los elementos verticalmente */
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    padding: 20px; /* Espaciado interno opcional */
+}
+.container2 {
+    display: flex;
+    height: 90vh; /* Asegura que el contenedor ocupe toda la altura de la ventana */
+    width: 225vh;
 }
 
-.input_search input {
-    padding: 8px;
-    background-color: #f0f0f0; /* Fondo gris claro */
-    color: #333333;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-
-.input_search i {
-    color: #333333; /* Color oscuro para el icono */
-    cursor: pointer;
-}
-
-/* Table */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #fafafa; /* Fondo muy claro para las tablas */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-table thead {
-    background-color: #333333; /* Fondo oscuro para encabezados */
-    color: white;
-}
-
-table thead th {
-    padding: 15px;
-    text-align: left;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-bottom: 2px solid #555555;
-}
-
-table tbody tr {
-    background-color: #ffffff;
-    transition: background-color 0.3s ease;
-}
-
-table tbody tr:nth-child(even) {
-    background-color: #f0f0f0; /* Alternar con gris claro */
-}
-
-table tbody tr:hover {
-    background-color: #eeeeee; /* Hover en gris más claro */
-}
-
-table tbody td {
-    padding: 15px;
-    border-bottom: 1px solid #dddddd;
-    font-size: 14px;
-}
-
-/* Iconos */
-#icons {
-    color: #333333;
-    cursor: pointer;
-    margin-right: 10px;
-    transition: color 0.3s ease;
-}
-
-#icons:hover {
-    color: #555555;
-}
-
-/* Table Footer */
-.table_fotter {
-    margin-top: 20px;
-    color: #555555;
-    text-align: right;
-    font-size: 14px;
-}
-
-/* Transiciones suaves */
-button, a, input, select, #icons {
-    transition: all 0.3s ease;
+/* Estilo del textarea */
+#descrip {
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    max-width: 600px; /* Establece un ancho máximo */
+    height: 100px; /* Ajusta la altura según lo desees */
+    padding: 10px; /* Agrega espacio interno */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+    resize: vertical; /* Permite redimensionar verticalmente */
 }
