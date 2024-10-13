@@ -287,6 +287,11 @@
             width: 100%;
             height: 240px;
         }
+        .historia-img {
+        width: 470px;
+        height: 450px;
+        object-fit: cover;
+    }
     </style>
 </head>
 <body>
@@ -374,100 +379,105 @@
     <section id="historia" class="section bg-light">
         <div class="container">
             <h2 class="section-title fade-in-up">Historia</h2>
-            <div class="row align-items-center">
+            <div class="row">
                 <div class="col-md-6 fade-in-up">
                     <img src="{{ url_for('static', filename='img/jimenez1.jpg') }}" alt="Imagen histórica de Guavatá"
-                        class="img-fluid rounded shadow-lg mb-4">
+                        class="img-fluid rounded shadow-lg mb-4 historia-img .expanded-image" >
+                    <img src="{{ url_for('static', filename='img/martin.jpg') }}" alt="Imagen histórica de Guavatá"
+                        class="img-fluid rounded shadow-lg mb-4 historia-img .expanded-image">
                 </div>
                 <div class="col-md-6 fade-in-up">
                     <h3 class="mb-4">Raíces Históricas</h3>
-                    <p>
-                        Guavatá es un municipio colombiano ubicado en el departamento de Santander. Su historia se remonta a la época precolombina, cuando la región estaba habitada por indígenas Guanes. El pueblo fue fundado oficialmente en el siglo XVII y desde entonces ha sido un importante  centro agrícola y cultural de la región.
-                    </p>
-                    <p>
-                        A lo largo de los años, Guavatá ha preservado su rica herencia cultural y natural, convirtiéndose en un destino atractivo para quienes buscan experimentar la autenticidad de la vida rural colombiana.
-                    </p>
+
+                    <p>Guavatá es conocida como la capital mundial de la guayaba, ya que allí se cultiva desde epocas antepasadas dicho fruto, y tambien se fabrica <br> una gran cantidad de bocadillos, el cual es comerciado en diferentes lugares de colombia.</p>
+                    <p>el municipio de Guavatá estuvo hubicado por las tribus muiscas chibchas, la franja altityudinal presnta un clima favorable para los asentamientos<br>  humanos en comparacion con otras zonas mas frias e insalumbres.  </p>
+                    <p>Guavata es un municipio con una rica historia y cultura que ha evolucionado a lo largo de los siglos. su belleza natural y patrimonio cultural la <br>combierten en un destino turistico y atractivo en el departamento de santander. </p>
+                     <p>La actividad agrícola en épocas de la colonia fue la caña, a finales de la colonia se incrementó y diversificó la producción agrícola, lo mismo que<br> la minería y la actividad artesanal (textil); en ésta época también se aceleró el crecimiento de la población con el proceso de mestizaje iniciado en el siglo anterior.
+                    <p>Guavatá figuran con 25 veredas las cuales son: San Rafael, Pavachoque, Puente Naranjos, San Jose de Iroba, Estancia de González, San Vicente, <br>San Roque Picacho, Botua I, Botua II, Matarredonda, Helechal y mesa,Casiquito, Pedregal, Popoa, Helechal y Mesa, Tres Esquinas,<br> Tres Esquinas Los Patios, Puerto López, Unión, Mercadillo, Escobal y El Injerto.</p>
+                    <p>En el ámbito cultural, Guavatá comparte muchas tradiciones con otros municipios de la provincia de Vélez, como la música carranguera, los festivales locales<br> y las costumbres campesinas. A lo largo de su historia, Guavatá ha mantenido su esencia rural, aunque ha tenido un<br> desarrollo gradual en términos de infraestructura y comunicaciones.
+            
+                    <p> En los últimos años, el turismo ha empezado a ganar relevancia, debido a sus paisajes naturales y la cercanía con otros destinos turísticos de Santander. <br>Sin embargo, sigue siendo un municipio con un fuerte arraigo en sus tradiciones agrícolas y culturales.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="cultura" class="section">
-      <div class="container">
-          <h2 class="section-title fade-in-up">Riquezas Culturales</h2>
-          <p class="text-center mb-5 fade-in-up" style="font-size: 1.2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
-              La cultura de Guavatá, Santander, es una mezcla vibrante de tradiciones indígenas y españolas, reflejada en sus festividades, patrimonio arquitectónico, gastronomía y mitos. Descubre la esencia de nuestro pueblo a través de estas facetas culturales únicas.
-          </p>
-          <div class="row">
-              <div class="col-md-4 mb-4 fade-in-up">
-                  <div class="card h-100">
-                      <div class="card-header bg-primary text-white">
-                          <h3 class="mb-0">Festividades/Tradiciones</h3>
-                      </div>
-                      <img src="{{ url_for('static', filename='img/cristo.jpg') }}" class="card-img-top" alt="Ilustración de festividades">
-                      <div class="card-body">
-                          <h5 class="card-title">Fiesta Patronal del Santo Cristo de Guavatá</h5>
-                          <p class="card-text">
-                              Un evento religioso emblemático celebrado en febrero, donde miles de feligreses convergen en nuestro santuario católico para rendir homenaje. Esta festividad, con más de 290 años de historia, es un testimonio vivo de nuestra fe y tradiciones.
-                          </p>
-                          <ul class="list-group list-group-flush">
-                              <li class="list-group-item">Procesiones solemnes y misas especiales</li>
-                              <li class="list-group-item">Conciertos y danzas típicas</li>
-                              <li class="list-group-item">Ferias gastronómicas con sabores locales</li>
-                              <li class="list-group-item">Peregrinación anual con más de 2,000 visitantes</li>
-                          </ul>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-4 mb-4 fade-in-up">
-                  <div class="card h-100">
-                      <div class="card-header bg-primary text-white">
-                          <h3 class="mb-0">Atractivos Naturales</h3>
-                      </div>
-                      <img src="{{ url_for('static', filename='img/quebraalejo.jpg') }}" class="card-img-top" alt="Ilustración de Atractivos Visuales">
-                      <div class="card-body">
-                          <h5 class="card-title">Paisajes Montañosos y Ríos Cristalinos</h5>
-                          <p class="card-text">
-                              Guavatá se engalana con una belleza natural incomparable, ofreciendo a visitantes y lugareños experiencias únicas en medio de la naturaleza santandereana.
-                          </p>
-                          <ul class="list-group list-group-flush">
-                              <li class="list-group-item">Senderos naturales para caminatas y exploración</li>
-                              <li class="list-group-item">Cascadas de agua cristalina</li>
-                              <li class="list-group-item">Vistas panorámicas breathtaking</li>
-                              <li class="list-group-item">Oportunidades para ecoturismo y fotografía</li>
-                          </ul>
-                          <p class="card-text mt-3">
-                              Estos atractivos no solo son un deleite visual, sino que forman parte integral de nuestra identidad cultural y conexión con la tierra.
-                          </p>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-md-4 mb-4 fade-in-up">
-                  <div class="card h-100">
-                      <div class="card-header bg-primary text-white">
-                          <h3 class="mb-0">La Leyenda del Mohán</h3>
-                      </div>
-                      <img src="{{ url_for('static', filename='img/mohan.jpg') }}" class="card-img-top" alt="Ilustración del Mohán">
-                      <div class="card-body">
-                          <h5 class="card-title">Guardián Místico de las Aguas</h5>
-                          <p class="card-text">
-                              Entre las leyendas más fascinantes de Guavatá, el Mohán se alza como un personaje mítico que cautiva la imaginación y respeto de generaciones.
-                          </p>
-                          <ul class="list-group list-group-flush">
-                              <li class="list-group-item">Protector de la naturaleza y los tesoros ocultos</li>
-                              <li class="list-group-item">Habita cerca de ríos y cuerpos de agua</li>
-                              <li class="list-group-item">Simboliza la dualidad de la belleza y el peligro natural</li>
-                              <li class="list-group-item">Personifica la conexión profunda entre la comunidad y su entorno</li>
-                          </ul>
-                          <p class="card-text mt-3">
-                              Esta leyenda no solo entretiene, sino que también enseña el respeto por la naturaleza y las tradiciones orales de nuestro pueblo.
-                          </p>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </section>
+        <div class="container">
+            <h2 class="section-title fade-in-up">Riquezas Culturales</h2>
+            <p class="text-center mb-5 fade-in-up" style="font-size: 1.2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                La cultura de Guavatá, Santander, es una mezcla vibrante de tradiciones indígenas y españolas, reflejada en sus festividades, patrimonio arquitectónico, gastronomía y mitos. Descubre la esencia de nuestro pueblo a través de estas facetas culturales únicas.
+            </p>
+            <div class="row">
+                <div class="col-md-4 mb-4 fade-in-up">
+                    <div class="card h-100 border border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="mb-0">Festividades/Tradiciones</h3>
+                        </div>
+                        <img src="{{ url_for('static', filename='img/cristo.jpg') }}" class="card-img-top" alt="Ilustración de festividades">
+                        <div class="card-body">
+                            <h5 class="card-title">Fiesta Patronal del Santo Cristo de Guavatá</h5>
+                            <p class="card-text">
+                                Un evento religioso emblemático celebrado en febrero, donde miles de feligreses convergen en nuestro santuario católico para rendir homenaje. Esta festividad, con más de 290 años de historia, es un testimonio vivo de nuestra fe y tradiciones.
+                            </p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Procesiones solemnes y misas especiales</li>
+                                <li class="list-group-item">Conciertos y danzas típicas</li>
+                                <li class="list-group-item">Ferias gastronómicas con sabores locales</li>
+                                <li class="list-group-item">Peregrinación anual con más de 2,000 visitantes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 fade-in-up">
+                    <div class="card h-100 border border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="mb-0">Atractivos Naturales</h3>
+                        </div>
+                        <img src="{{ url_for('static', filename='img/quebraalejo.jpg') }}" class="card-img-top" alt="Ilustración de Atractivos Visuales">
+                        <div class="card-body">
+                            <h5 class="card-title">Paisajes Montañosos y Ríos Cristalinos</h5>
+                            <p class="card-text">
+                                Guavatá se engalana con una belleza natural incomparable, ofreciendo a visitantes y lugareños experiencias únicas en medio de la naturaleza santandereana.
+                            </p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Senderos naturales para caminatas y exploración</li>
+                                <li class="list-group-item">Cascadas de agua cristalina</li>
+                                <li class="list-group-item">Vistas panorámicas breathtaking</li>
+                                <li class="list-group-item">Oportunidades para ecoturismo y fotografía</li>
+                            </ul>
+                            <p class="card-text mt-3">
+                                Estos atractivos no solo son un deleite visual, sino que forman parte integral de nuestra identidad cultural y conexión con la tierra.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4 fade-in-up">
+                    <div class="card h-100 border border-primary">
+                        <div class="card-header bg-primary text-white">
+                            <h3 class="mb-0">La Leyenda del Mohán</h3>
+                        </div>
+                        <img src="{{ url_for('static', filename='img/mohan.jpg') }}" class="card-img-top" alt="Ilustración del Mohán">
+                        <div class="card-body">
+                            <h5 class="card-title">Guardián Místico de las Aguas</h5>
+                            <p class="card-text">
+                                Entre las leyendas más fascinantes de Guavatá, el Mohán se alza como un personaje mítico que cautiva la imaginación y respeto de generaciones.
+                            </p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Protector de la naturaleza y los tesoros ocultos</li>
+                                <li class="list-group-item">Habita cerca de ríos y cuerpos de agua</li>
+                                <li class="list-group-item">Simboliza la dualidad de la belleza y el peligro natural</li>
+                                <li class="list-group-item">Personifica la conexión profunda entre la comunidad y su entorno</li>
+                            </ul>
+                            <p class="card-text mt-3">
+                                Esta leyenda no solo entretiene, sino que también enseña el respeto por la naturaleza y las tradiciones orales de nuestro pueblo.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
   <section id="galeria" class="section bg-light">
         <div class="container">
             <h2 class="section-title fade-in-up">Galería</h2>
@@ -492,50 +502,55 @@
         </div>
   </section>
 
-    <section id="contacto" class="section">
-        <div class="container">
-            <h2 class="section-title fade-in-up">Contáctanos</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8 fade-in-up">
-                    <form action="{{ url_for('contactanos.add') }}" method="post" enctype="multipart/form-data" class="contact-form">
-                        <div class="mb-3">
-                            <label for="nombrecon" class="form-label">Nombre:</label>
-                            <input type="text" id="nombrecon" name="nombrecon" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="correocon" class="form-label">Correo:</label>
-                            <input type="email" id="correocon" name="correocon" class="form-control" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="r1" class="form-label">¿Cómo te pareció la historia de Guavatá?:</label>
-                            <input type="text" id="r1" name="r1" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="r2" class="form-label">¿Qué opinas sobre las imágenes presentadas?:</label>
-                            <input type="text" id="r2" name="r2" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="r3" class="form-label">¿Cómo valoras la cultura de Guavatá?:</label>
-                            <input type="text" id="r3" name="r3" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="r4" class="form-label">¿Qué más te gustaría conocer?:</label>
-                            <input type="text" id="r4" name="r4" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="r5" class="form-label">¿Te gustó todo lo que encontraste aquí?:</label>
-                            <input type="text" id="r5" name="r5" class="form-control">
-                        </div>
-                        <div class="mb-3">
-                            <label for="comen" class="form-label">Comentarios adicionales:</label>
-                            <textarea id="comen" name="comen" class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Enviar</button>
-                    </form>
-                </div>
+  <section id="contacto" class="section">
+    <div class="container">
+        <h2 class="section-title fade-in-up">Contáctanos</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8 fade-in-up">
+                <form action="{{ url_for('contactanos.add') }}" method="post" enctype="multipart/form-data" class="contact-form">
+                    <div class="mb-3">
+                        <label for="nombrecon" class="form-label">Nombre:</label>
+                        <input type="text" id="nombrecon" name="nombrecon" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="correocon" class="form-label">Correo:</label>
+                        <input type="email" id="correocon" name="correocon" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="r1" class="form-label">¿Cómo te pareció la historia de Guavatá?:</label>
+                        <input type="text" id="r1" name="r1" class="form-control" maxlength="40">
+                        <small class="text-muted">Máximo 40 caracteres</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="r2" class="form-label">¿Qué opinas sobre las imágenes presentadas?:</label>
+                        <input type="text" id="r2" name="r2" class="form-control" maxlength="40">
+                        <small class="text-muted">Máximo 40 caracteres</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="r3" class="form-label">¿Cómo valoras la cultura de Guavatá?:</label>
+                        <input type="text" id="r3" name="r3" class="form-control" maxlength="40">
+                        <small class="text-muted">Máximo 40 caracteres</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="r4" class="form-label">¿Qué más te gustaría conocer?:</label>
+                        <input type="text" id="r4" name="r4" class="form-control" maxlength="40">
+                        <small class="text-muted">Máximo 40 caracteres</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="r5" class="form-label">¿Te gustó todo lo que encontraste aquí?:</label>
+                        <input type="text" id="r5" name="r5" class="form-control" maxlength="40">
+                        <small class="text-muted">Máximo 40 caracteres</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="comen" class="form-label">Comentarios adicionales:</label>
+                        <textarea id="comen" name="comen" class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </form>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <footer class="text-center">
         <p>&copy; 2024 Municipio de Guavatá. Todos los derechos reservados.</p>
