@@ -13,9 +13,18 @@
     <div class="container2"> 
         <div class="sidebar">
             <h2>Administrador</h2>
-            <a href="{{ url_for('pagina.admingal') }}">Galería</a>
-            <a href="{{ url_for('galeria.add') }}">Agregar Imagen</a>
-            <a href="{{ url_for('pagina.admincon') }}">Contactanos</a>
+            <a href="{{ url_for('pagina.admingal') }}">
+                <i class="bi bi-images"></i> Galería
+            </a>
+            <a href="{{ url_for('galeria.add') }}">
+                <i class="bi bi-plus-circle"></i> Agregar Imagen
+            </a>
+            <a href="{{ url_for('pagina.admincon') }}">
+                <i class="bi bi-envelope"></i> Contactanos
+            </a>
+            <a href="{{ url_for('auth.logout') }}" class="logout-link">
+                <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+            </a>
         </div>
         <div class="content2">
             <h2 class="header">Editar imagen</h2>

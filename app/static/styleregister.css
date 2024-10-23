@@ -1,0 +1,116 @@
+/* Estilo general */
+body {
+    background: linear-gradient(135deg, #fff, #e0ffcc);
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: #333;
+}
+
+/* Contenedor del formulario */
+.form {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Estilo del título y subtítulo */
+.title {
+    font-size: 2em;
+    font-weight: 700;
+    color: #ff7a29; /* Naranja */
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #00b34a; /* Verde */
+    margin-bottom: 30px;
+}
+
+/* Estilo de los inputs y select */
+.mb-3 {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    display: block;
+    text-align: left;
+    font-size: 1em;
+    font-weight: 600;
+    color: #ff7a29; /* Naranja */
+    margin-bottom: 8px;
+}
+
+/* Todos los inputs y select tendrán el mismo tamaño */
+.form-control, .form-select {
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #00b34a; /* Verde */
+    width: 100%; /* Ancho consistente */
+    font-size: 1em;
+    transition: all 0.3s ease;
+    background-color: #f9f9f9;
+    box-sizing: border-box; /* Garantiza que el padding no afecte el ancho */
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #ff7a29; /* Naranja */
+    outline: none;
+    box-shadow: 0px 4px 10px rgba(255, 122, 41, 0.2);
+}
+
+/* Enlace de iniciar sesión */
+.signin {
+    font-size: 0.9em;
+    color: #00b34a; /* Verde */
+}
+
+.signin a {
+    color: #ff7a29; /* Naranja */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.signin a:hover {
+    text-decoration: underline;
+}
+
+/* Botón de enviar */
+.submit {
+    background-color: #ff7a29; /* Naranja */
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Ancho completo para que coincida */
+    text-transform: uppercase;
+}
+
+.submit:hover {
+    background-color: #00b34a; /* Verde */
+}
+
+/* Efecto flotante */
+@keyframes floating {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+    50% {
+        transform: translate(0, -10px);
+    }
+}
+
+.form {
+    animation: floating 6s infinite ease-in-out;
+}

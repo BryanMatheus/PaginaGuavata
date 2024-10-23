@@ -40,7 +40,8 @@ body {
 }
 
 .sidebar a {
-    display: block;
+    display: flex; /* Cambiado a flex para alinear íconos y texto */
+    align-items: center; /* Alinea verticalmente íconos y texto */
     color: #cccccc;
     padding: 12px 0;
     text-decoration: none;
@@ -49,10 +50,15 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
+.sidebar a i {
+    margin-right: 10px; /* Espacio entre el ícono y el texto */
+}
+
 .sidebar a:hover {
     background-color: #444444;
     color: #ffffff;
 }
+
 
 /* Content con margen izquierdo para sidebar fija */
 .content {
@@ -110,7 +116,7 @@ body {
 /* Contenedor de tarjetas con 3 por fila */
 .card-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Siempre 3 tarjetas por fila */
+    grid-template-columns: repeat(2, 1fr); /* Siempre 3 tarjetas por fila */
     gap: 20px;
     margin-top: 20px;
 }
@@ -253,3 +259,6 @@ button:hover {
     box-sizing: border-box; /* Incluye el padding en el ancho total */
     resize: vertical; /* Permite redimensionar verticalmente */
 }
+
+
+

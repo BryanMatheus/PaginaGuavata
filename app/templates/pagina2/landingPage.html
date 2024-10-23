@@ -6,6 +6,8 @@
     <title>Guavatá - Nuestro Hermoso Pueblo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <style>
         :root {
             --primary-color: #3a5a40;
@@ -296,6 +298,12 @@
     .border-dark-green {
     border-color: #3a5a40 !important; /* Verde oscuro */
     }
+
+    .text-dark-green {
+    color: #3a5a40;
+    text-align: center;
+    }
+
     </style>
 </head>
 <body>
@@ -325,6 +333,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#contacto"><i class="fas fa-envelope me-1"></i>Contáctanos</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('auth.login') }}" class="nav-link">
+                            <i class="fas fa-user-circle"></i> Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('register.register') }}" class="nav-link">
+                            <i class="fas fa-user-plus"></i> Register</a>
+                    </li>                    
                 </ul>
             </div>
         </div>
@@ -406,7 +422,7 @@
         </div>
     </section>
 
-    <section id="cultura" class="section">
+    <section id="cultura" class="bubbles-section">
         <div class="container">
             <h2 class="section-title fade-in-up">Riquezas Culturales</h2>
             <p class="text-center mb-5 fade-in-up" style="font-size: 1.2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
@@ -415,7 +431,7 @@
             <div class="row">
                 <div class="col-md-4 mb-4 fade-in-up">
                     <div class="card h-100 border border-dark-green">
-                        <div class="card-header bg-primary text-white">
+                        <div class="card-header bg-primary text-dark-green">
                             <h3 class="mb-0">Festividades/Tradiciones</h3>
                         </div>
                         <img src="{{ url_for('static', filename='img/cristo.jpg') }}" class="card-img-top" alt="Ilustración de festividades">
@@ -435,7 +451,7 @@
                 </div>
                 <div class="col-md-4 mb-4 fade-in-up">
                     <div class="card h-100 border border-dark-green">
-                        <div class="card-header bg-primary text-white">
+                        <div class="card-header bg-primary text-dark-green">
                             <h3 class="mb-0">Atractivos Naturales</h3>
                         </div>
                         <img src="{{ url_for('static', filename='img/quebraalejo.jpg') }}" class="card-img-top" alt="Ilustración de Atractivos Visuales">
@@ -458,7 +474,7 @@
                 </div>
                 <div class="col-md-4 mb-4 fade-in-up">
                     <div class="card h-100 border border-dark-green">
-                        <div class="card-header bg-primary text-white">
+                        <div class="card-header bg-primary text-dark-green">
                             <h3 class="mb-0">La Leyenda del Mohán</h3>
                         </div>
                         <img src="{{ url_for('static', filename='img/mohan.jpg') }}" class="card-img-top" alt="Ilustración del Mohán">
@@ -507,7 +523,7 @@
         </div>
   </section>
 
-  <section id="contacto" class="section">
+  <section id="contacto" class="bubbles-section">
     <div class="container">
         <h2 class="section-title fade-in-up">Contáctanos</h2>
         <div class="row justify-content-center">

@@ -14,22 +14,16 @@ def login():
 
         if user:
             login_user(user)
-            flash("Login successful!", "success")
             
             if user.rol == 'admin':
-                return redirect(url_for('auth.administrador'))
+                return redirect(url_for('pagina.admingal'))
             
-        flash('Invalid credentials. Please try again.', 'danger')
+        flash('Credenciales incorrectas. Intente de nuevo', 'danger')
     
     return render_template("/users/login.html")
-
-@auth_bp.route('/administrador')
-def administrador():
-    return render_template("/administradores/indexg.html")
 
 @auth_bp.route('/logout')
 @login_required
 def logout():
     logout_user()
-    flash('You have been logged out.', 'info')
     return redirect(url_for('auth.login'))
